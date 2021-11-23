@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { BsCart4 } from 'react-icons/bs';
-import { ALL_PRODUCTS, MENS_CATEGORY_API } from '../../constants/apiurl';
 
 import useCart from '../../hooks/useCart.js';
 import useProducts from '../../hooks/useProducts';
@@ -9,9 +8,9 @@ import useProducts from '../../hooks/useProducts';
 import Header from '../../components/header/header.component';
 import Button from '../../components/button/button.component';
 
-import './clothes.styles.css';
+import './products.styles.css';
 
-function Clothes() {
+function Products() {
   const params = useLocation();
   const route = params.pathname.split('/')[1];
   const productList = useProducts(route);
@@ -60,18 +59,6 @@ function Clothes() {
                 // size='1.3rem'
               />
             </Button>
-
-            {/* <button
-              data-key={`${item.id}`}
-              onClick={handleClick}
-              className='button btn-cart'>
-              Add to Cart{' '}
-              <BsCart4
-                className='cart-icon'
-                // color='rgb(111, 14, 180)'
-                size='1.3rem'
-              />
-            </button> */}
           </div>
         ))}
       </div>
@@ -79,24 +66,4 @@ function Clothes() {
   );
 }
 
-export default Clothes;
-
-// const updatedCart = cartItems.reduce((productList, product) => {
-//   console.log(`productList ${productList}`);
-//   if (product.id === item.id) {
-//     const { count } = product;
-//     const updatedProduct = { ...product, count: count + 1 };
-//     productList = [...productList, updatedProduct];
-//   } else {
-//     const newItem = { ...item, count: 1 };
-//     console.log(newItem);
-//     // const product = { [item.id]: { ...item, count: 1 } };
-//     productList.push(newItem);
-//     // setCartItems((prevState) => ({ ...prevState,
-//     //   ...product,
-//     // }));
-//   }
-//   return productList;
-// });
-// console.log(`UpdatedCart ${updatedCart}`);
-// setCartItems(updatedCart);
+export default Products;

@@ -3,25 +3,21 @@ export const clothesData = [
     id: 1,
     title: 'cloth1',
     imageUrl: 'https://i.imgur.com/4YDCFzB.jpg',
-    price: 1000,
   },
   {
     id: 2,
     title: 'cloth2',
     imageUrl: 'https://i.imgur.com/4YDCFzB.jpg',
-    price: 1000,
   },
   {
     id: 3,
     title: 'cloth3',
     imageUrl: 'https://i.imgur.com/4YDCFzB.jpg',
-    price: 1000,
   },
   {
     id: 4,
     title: 'cloth4',
     imageUrl: 'https://i.imgur.com/4YDCFzB.jpg',
-    price: 1000,
   },
   {
     id: 5,

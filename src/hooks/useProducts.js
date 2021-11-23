@@ -9,6 +9,7 @@ import {
 
 export default function useProducts(apiurl) {
   const [product, setProduct] = useState([]);
+
   useEffect(() => {
     const urls = {
       mens: MENS_CATEGORY_API,
@@ -17,10 +18,10 @@ export default function useProducts(apiurl) {
       electronics: ELECTRONICS_CATEGORY_API,
     };
     const matched_route = Object.keys(urls).filter((route) => {
-      console.log(route.toLowerCase().match(apiurl));
+      // console.log(route.toLowerCase().match(apiurl));
       return route.toLowerCase().match(apiurl);
     });
-    console.log(matched_route);
+
     const API_URL = urls[matched_route[0]] || apiurl;
     async function fetchProducts(API_URL) {
       const res = await fetch(API_URL);
