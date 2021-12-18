@@ -17,10 +17,11 @@ function Products() {
   const addItemstoCart = useCart();
 
   function handleClick(event) {
-    const id = event.target.dataset.key;
-    const clickedProduct = productList.filter((product) => {
-      if (product.id == id) return product;
-    });
+    const id = event.target.dataset.id;
+
+    const clickedProduct = productList.filter(
+      (product) => Number(product.id) === Number(id)
+    );
 
     const product = clickedProduct[0];
     addItemstoCart(product);
@@ -49,15 +50,11 @@ function Products() {
               </div>
             </div>
             <Button
-              id={`${item.id}`}
+              data-id={`${item.id}`}
               classname='btn-cart'
               title='Add to Cart'
-              handleClick={handleClick}>
-              <BsCart4
-                className='cart-icon'
-                // color='rgb(111, 14, 180)'
-                // size='1.3rem'
-              />
+              onClick={handleClick}>
+              <BsCart4 pointerEvents='none' className='cart-icon' />
             </Button>
           </div>
         ))}

@@ -89,24 +89,28 @@ export default function Cart() {
                 </p>
                 <div className='cart-product__counter'>
                   <Button
-                    id={index}
-                    handleClick={decrementCartProduct}
+                    data-key={index}
+                    onClick={decrementCartProduct}
                     classname='btn-increment'
                     title='-'></Button>
                   <p>{item.count}</p>
                   <Button
-                    id={`${index}`}
-                    handleClick={incrementCartProduct}
+                    data-key={`${index}`}
+                    onClick={incrementCartProduct}
                     classname='btn-increment'
                     title='+'></Button>
                 </div>
                 <div className='cart-product__price'>
                   <Button
-                    id={`${index}`}
-                    handleClick={removeItem}
+                    data-key={`${index}`}
+                    onClick={removeItem}
                     classname='btn-delete'
                     title='Remove Item'>
-                    <MdDeleteForever className='delete-icon' size='1.3rem' />
+                    <MdDeleteForever
+                      pointerEvents='none'
+                      className='delete-icon'
+                      size='1.3rem'
+                    />
                   </Button>
                   <div className='product-price'>${item.price}</div>
                 </div>
@@ -140,7 +144,7 @@ export default function Cart() {
       <p className='empty-cart__text'>
         There are no items in your shopping cart.
       </p>
-      <Link path='/'>
+      <Link to='/'>
         <Button classname='btn-shopnow' title='Shop Now'>
           <BsCart4 className='cart-icon' />
         </Button>

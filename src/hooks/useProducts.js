@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import {
-  ALL_PRODUCTS,
   MENS_CATEGORY_API,
   WOMENS_CATEGORY_API,
   JEWELERY_CATEGORY_API,

@@ -1,17 +1,8 @@
 import './button.styles.css';
 
-export default function Button({
-  id,
-  title,
-  classname,
-  handleClick,
-  children,
-}) {
+export default function Button({ classname, title, children, ...otherProps }) {
   return (
-    <button
-      data-key={id}
-      className={`button ${classname}`}
-      onClick={handleClick}>
+    <button className={`button ${classname}`} {...otherProps}>
       {title} {children}
     </button>
   );

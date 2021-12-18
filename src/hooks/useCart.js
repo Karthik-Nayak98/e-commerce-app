@@ -6,8 +6,8 @@ export default function useCart() {
     useContext(CartContext);
 
   useEffect(() => {
-    console.log('cartItems', cartItems);
-    console.log('totalprice', totalPrice);
+    // console.log('cartItems', cartItems);
+    // console.log('totalprice', totalPrice);
   }, [cartItems, totalPrice]);
 
   function addItemsToCart(product) {
