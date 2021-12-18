@@ -16,9 +16,9 @@ function Description() {
   const product = useProducts(`${ALL_PRODUCTS}/${id}`);
   const addItemstoCart = useCart();
 
-  useEffect(() => {
-    console.log(typeof product);
-  }, [product]);
+  // useEffect(() => {
+  //   console.log(typeof product);
+  // }, [product]);
 
   function handleClick(event) {
     addItemstoCart(product);
@@ -45,10 +45,10 @@ function Description() {
           <p className='product-description__text'>{product.description}</p>
 
           <Button
-            id={`${product.id}`}
+            data-id={`${product.id}`}
             classname='product-description__button btn-cart'
             title='Add to Cart'
-            handleClick={handleClick}>
+            onClick={handleClick}>
             <BsCart4 className='cart-icon' />
           </Button>
         </div>

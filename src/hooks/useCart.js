@@ -2,70 +2,60 @@ import { useContext, useEffect } from 'react';
 import { CartContext } from '../context/cartContext';
 
 export default function useCart() {
-  const { cartItems, setCartItems, setTotalItems, setTotalPrice } =
+  const { cartItems, setCartItems, totalPrice, setTotalItems, setTotalPrice } =
     useContext(CartContext);
 
   useEffect(() => {
-    console.log('cartItems', cartItems);
-  }, [cartItems]);
+    // console.log('cartItems', cartItems);
+    // console.log('totalprice', totalPrice);
+  }, [cartItems, totalPrice]);
 
   function addItemsToCart(product) {
-    // const updatedCart = cartItems.map((item, index) => {
-    //   count = index + 1;
-    //   if (item.id === product.id) {
-    //     const prevCount = item.count;
-    //     const updatedCart = [...cartItems];
-    //     updatedCart[index] = { ...item, count: prevCount + 1 };
-    //     console.log(`before count update ${Object.values(updatedCart)}`);
-    //     return updatedCart;
-    //   } else {
-    //   }
-    // });
+    let updatedCart;
 
-    for (var i = 0; i < cartItems.length; ++i) {
-      if (cartItems[i].id === product.id) {
-        const prevCount = cartItems[i].count;
-        console.log(typeof prevCount);
-        const updatedCart = [...cartItems];
-        updatedCart[i] = { ...updatedCart[i], count: Number(prevCount) + 1 };
-        setTotalPrice((prevPrice) => prevPrice + product.price);
-        setCartItems(updatedCart);
-        break;
-      }
-    }
+    // Get the index of the item with the id of the product.
+    const index = cartItems.findIndex((item) => item.id === product.id);
 
-    // If product is not present in the cart.
-    if (i === cartItems.length) {
-      const newCartItem = { ...product, count: 1 };
-      setCartItems([...cartItems, newCartItem]);
-      setTotalPrice((prevPrice) => prevPrice + product.price);
+    //  Add new item to the array if the item is not present.
+    if (index < 0) {
+      const newCartItem = { ...product, count: 1, totalPrice: product.price };
+      updatedCart = [...cartItems, newCartItem];
+    } else {
+      const prevCount = cartItems[index].count;
+      const prevPrice = cartItems[index].price;
+      updatedCart = [...cartItems];
+      updatedCart[index] = {
+        ...updatedCart[index],
+        count: Number(prevCount) + 1,
+        totalPrice: prevPrice + product.price,
+      };
     }
+    setCartItems(updatedCart);
     setTotalItems((prevCount) => prevCount + 1);
+    setTotalPrice((prevPrice) => prevPrice + product.price);
   }
-  // function addItemsToCart(item) {
-  //   const keys = Object.keys(cartItems);
-  //   for (var i = 0; i < keys.length; ++i) {
-  //     if (Number(keys[i]) === item.id) {
-  //       let { count, price } = cartItems[keys[i]];
-  //       const updatedItem = { ...cartItems[keys[i]], count: count + 1 };
-  //       setCartItems({ ...cartItems, [item.id]: updatedItem });
-  //       setTotalPrice((prevPrice) => prevPrice + price);
-  //       break;
-  //     }
-  //   }
-
-  //   //If the product is not present in the cart.
-  //   if (i === keys.length) {
-  //     const product = { [item.id]: { ...item, count: 1 } };
-
-  //     setCartItems((prevState) => ({
-  //       ...prevState,
-  //       ...product,
-  //     }));
-
-  //     setTotalPrice((prevPrice) => prevPrice + product[item.id].price);
-  //   }
-  //   setTotalItems((prevCount) => prevCount + 1);
-  // }
   return addItemsToCart;
 }
+
+// for (var i = 0; i < cartItems.length; ++i) {
+//   if (cartItems[i].id === product.id) {
+//     const prevCount = cartItems[i].count;
+//     const prevPrice = cartItems[i].price;
+//     const updatedCart = [...cartItems];
+//     updatedCart[i] = {
+//       ...updatedCart[i],
+//       count: Number(prevCount) + 1,
+//       totalPrice: prevPrice + product.price,
+//     };
+//     setTotalPrice((prevPrice) => prevPrice + product.price);
+//     setCartItems(updatedCart);
+//     break;
+//   }
+// }
+
+// // If product is not present in the cart.
+// if (i === cartItems.length) {
+//   const newCartItem = { ...product, count: 1, totalPrice: product.price };
+//   setCartItems([...cartItems, newCartItem]);
+//   setTotalPrice((prevPrice) => prevPrice + product.price);
+// }
