@@ -16,10 +16,6 @@ function Description() {
   const product = useProducts(`${ALL_PRODUCTS}/${id}`);
   const addItemstoCart = useCart();
 
-  // useEffect(() => {
-  //   console.log(typeof product);
-  // }, [product]);
-
   function handleClick(event) {
     addItemstoCart(product);
   }

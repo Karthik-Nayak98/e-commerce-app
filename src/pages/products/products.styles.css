@@ -20,23 +20,7 @@
 .product-image {
   height: 85%;
   padding: 0.7rem;
-}
-
-.btn-cart {
-  width: 200px;
-  text-align: middle;
-  font-size: 14px;
-  color: rgb(111, 14, 180);
-  border: 1px solid rgb(111, 14, 180);
-  background-color: #f7f5f5;
-  transition: 0.2s ease-in;
-  box-shadow: 0px 3px 5px 2px rgb(226, 225, 225);
-  margin: 15px;
-}
-
-.btn-cart:hover {
-  color: #dee4e9;
-  background-color: rgb(111, 14, 180);
+  pointer-events: none;
 }
 
 img {
