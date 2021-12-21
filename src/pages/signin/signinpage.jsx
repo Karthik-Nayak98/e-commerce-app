@@ -65,7 +65,7 @@ const SignIn = () => {
           />
         </InputContainer>
         <Link to='/signup'>
-          <p>Do not have an account? Register here!!</p>
+          <p className='signup'>Do not have an account? Register here!!</p>
         </Link>
         <div className='button__container'>
           <Button type='submit' title='Sign in' classname='btn-signup' />

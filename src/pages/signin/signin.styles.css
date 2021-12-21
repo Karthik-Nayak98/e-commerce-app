@@ -1,9 +1,9 @@
 .form__container {
   border-radius: 5px;
   background-color: #f2f2f2;
-  /* width: 35%; */
-  min-height: 50vh;
-  margin: 20px;
+  width: 90vw;
+  max-width: 480px;
+  margin: 20px auto;
   padding: 20px;
   box-shadow: 0px 4px 15px 1px rgb(212, 212, 212);
   background-color: rgb(250, 250, 250);
@@ -13,48 +13,15 @@
   display: flex;
   flex-direction: column;
   justify-content: start;
+  gap: 1rem;
 }
 
-.input__container {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-direction: column;
-}
-
-form p {
-  margin: 10px 25px;
+form .signup {
   text-align: left;
   font-size: 0.9rem;
 }
 
-input[type='text'],
-input[type='email'],
-input[type='password'] {
-  align-self: center;
-  width: 90%;
-  padding: 12px 10px;
-  margin: 8px 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  text-align: left;
-}
-
 .button__container {
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
-  gap: 10px;
-  margin: 0px 23px;
-}
-
-@media screen and (min-width: 768px) {
-  .form__container {
-    width: 35%;
-    margin: 30px auto;
-  }
-  .button__container {
-    flex-direction: row;
-  }
 }

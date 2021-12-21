@@ -1,7 +1,9 @@
 import React from 'react';
 
-const InputContainer = (props) => {
-  return <div {...props}>{props.children}</div>;
+import './input-container.styles.css'
+
+const InputContainer = ({children, ...props}) => {
+  return <div {...props}>{children}</div>;
 };
 
 export default InputContainer;

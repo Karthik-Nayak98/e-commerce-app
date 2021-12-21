@@ -8,12 +8,12 @@
   cursor: pointer;
 }
 
+/* SignUp Button */
 .btn-signup {
-  margin: 10px 0px;
   width: 100%;
   background-color: rgb(111, 14, 180);
   color: white;
-  padding: 15px 20px;
+  padding: 12px 20px;
   border: none;
   border-radius: 4px;
   font-size: 0.9rem;
