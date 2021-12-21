@@ -1,12 +1,13 @@
 .homepage {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  padding: 20px 10px;
+  margin: 20px;
+  /* padding: 20px 10px; */
 }
 
-@media screen and (min-width: 768px) {
+/* @media screen and (min-width: 768px) {
   .homepage {
     padding: 20px 80px;
   }
-}
+} */

@@ -1,24 +1,17 @@
 .menu-item {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
-  flex: 1 1 auto;
-  min-width: 40%;
-  max-width: 48%;
-  height: 240px;
+  flex: 1 1 45%;
+  min-height: 250px;
   border: 1px solid black;
-  margin: 0 8px 15px;
   background-size: cover;
-  /* opacity: 0.8; */
+  background-position: center;
 }
 
 .content {
   background-color: rgb(243, 245, 247);
   opacity: 0.6;
-  /* width: 40%; */
-
   min-width: 150px;
   padding: 1rem;
   margin: 0.5rem;
