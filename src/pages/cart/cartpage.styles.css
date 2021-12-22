@@ -1,45 +1,50 @@
 .cart__container {
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: flex-start;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   padding: 0.5rem 0.8rem;
+  margin: 0 auto;
+  gap: 0.5rem;
+  font-size: 1em;
+}
+
+.cart-product__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  width: 80vw;
+  max-width: 600px;
+  padding: 0.5rem 0.8rem;
+  margin: 10px auto;
+  background-color: rgb(250, 250, 250);
+  border-radius: 10px;
+  box-shadow: 0px 2px 1px 2px rgb(236, 236, 236);
 }
 
 .cart-product__count {
   align-self: flex-start;
   font-size: 1.2rem;
   font-weight: 600;
-  /* color: rgb(111, 14, 180); */
-  margin: 0.5rem 6rem;
-}
-
-.cart-product__container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  width: 60%;
-  padding: 0.5rem 0.8rem;
-  margin: 10px auto 20px;
-  flex-wrap: wrap;
-  background-color: rgb(250, 250, 250);
-  /* border: 2px solid red; */
+  margin: 0 1rem;
 }
 
 .cart__products {
   display: flex;
-  gap: 2rem;
-  /* justify-content: space-between; */
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
   position: relative;
-  width: 80%;
+  max-width: 100%;
   border-bottom: 1px solid rgb(146, 146, 146);
-  /* box-shadow: 0px 3px 8px 4px rgb(197, 197, 197); */
 }
 
 .cart-product-image {
-  width: 25%;
-  padding: 1em;
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+  padding: 0.7rem;
 }
 
 .cart-product {
@@ -47,20 +52,22 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
+  width: 400px;
+  gap: 0.7rem;
   flex: 1 1 auto;
-  padding: 1rem;
+  padding: 0.5rem 0;
 }
 
 .cart-product__counter {
   display: flex;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 0.9rem;
   align-items: center;
 }
 
 .product-title {
   text-align: left;
-  font-size: 1.2rem;
+  font-size: 0.9em;
   font-weight: 500;
   color: rgb(111, 14, 180);
 }
@@ -76,82 +83,39 @@
 
 .product-price {
   text-align: center;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   font-weight: 600;
 }
 
 .cart-product__price {
   display: flex;
-  width: 90%;
-  justify-content: space-between;
-}
-
-.checkout__container {
-  width: 25vw;
-  height: 40vh;
-  padding: 0.5rem 0.8rem;
-  margin: 10px auto 20px;
-  background-color: rgb(250, 250, 250);
-}
-
-.checkout__title {
-  /* font-size: 1rem; */
-  margin: 15px 10px;
-  color: rgb(111, 14, 180);
-  text-align: left;
-  text-transform: uppercase;
-}
-
-.checkout-price__container {
-  display: flex;
-  /* left: */
   flex-direction: column;
+  align-items: flex-start;
   justify-content: flex-start;
-  gap: 0.6rem;
-  height: 10vh;
-  border-bottom: 1px solid rgb(146, 146, 146);
+  gap: 0.3rem;
 }
 
-.subtotal,
-.shipping,
-.grandtotal {
-  display: flex;
-  font-size: 0.9rem;
-  padding: 0 2rem;
-  justify-content: space-between;
-  text-transform: uppercase;
-}
+/* Media Queries  */
+@media screen and (min-width: 900px) {
+  .cart__container {
+    flex-direction: row;
+    max-width: 85vw;
+  }
 
-.grandtotal {
-  font-weight: 600;
-  font-size: 1.15rem;
-  padding: 0.5rem 2rem;
-}
+  .cart-product__container {
+    width: 50vw;
+  }
 
-/*  Empty cart container */
-.empty-cart-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* justify-content: space; */
-  gap: 2rem;
-  margin: 3rem auto;
-  width: 80%;
-  height: 60vh;
-  background-color: rgb(250, 250, 250);
-  border-radius: 10px;
-  box-shadow: 0px 2px 4px 4px rgb(221, 220, 220);
-  /* border: 2px solid red; */
-}
+  .product-title,
+  .product-price {
+    font-size: 1.1rem;
+  }
 
-.empty-cart__text {
-  font-size: 1.5rem;
-  color: rgb(41, 41, 41);
-  /* color: rgb(111, 14, 180); */
-}
-
-.empty-cart-container .shopping-cart {
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
+  .cart-product__price {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 75%;
+    max-width: 250px;
+  }
 }

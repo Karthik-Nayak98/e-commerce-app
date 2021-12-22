@@ -1,15 +1,14 @@
 import React, { useContext } from 'react';
 import Header from '../../components/header/header.component';
 import Button from '../../components/button/button.component';
+import EmptyCart from '../../components/empty-cart/empty-cart';
 
-import { Link } from 'react-router-dom';
 import { CartContext } from '../../context/cartContext';
 
 import { MdDeleteForever } from 'react-icons/md';
-import { BsCart4 } from 'react-icons/bs';
 
-import ShoppingCart from '../../assets/shopping-cart.jpg';
 import './cartpage.styles.css';
+import Checkout from '../../components/checkout/checkout';
 
 export default function Cart() {
   const {
@@ -101,6 +100,7 @@ export default function Cart() {
                     title='+'></Button>
                 </div>
                 <div className='cart-product__price'>
+                  <div className='product-price'>${item.price}</div>
                   <Button
                     data-key={`${index}`}
                     onClick={removeItem}
@@ -109,46 +109,17 @@ export default function Cart() {
                     <MdDeleteForever
                       pointerEvents='none'
                       className='delete-icon'
-                      size='1.3rem'
+                      size='1rem'
                     />
                   </Button>
-                  <div className='product-price'>${item.price}</div>
                 </div>
               </div>
             </div>
           ))}
         </div>
-        <div className='checkout__container'>
-          <p className='checkout__title'>Order Summary</p>
-          <div className='checkout-price__container'>
-            <div className='subtotal'>
-              <span>SubTotal</span>
-              <span className='totalprice'>$ {totalPrice.toFixed(2)}</span>
-            </div>
-            <div className='shipping'>
-              <span>Shipping</span>
-              <span className='totalprice'>$ 0</span>
-            </div>
-          </div>
-          <div className='grandtotal'>
-            <span>Grand total</span>
-            <span className='totalprice'>$ {totalPrice.toFixed(2)}</span>
-          </div>
-          <Button classname='btn-checkout' title='go to checkout'></Button>
-        </div>
+        <Checkout totalPrice={totalPrice}/>
       </div>
     </div>
-  ) : (
-    <div className='empty-cart-container'>
-      <img className='shopping-cart' src={ShoppingCart} alt='empty-cart' />
-      <p className='empty-cart__text'>
-        There are no items in your shopping cart.
-      </p>
-      <Link to='/'>
-        <Button classname='btn-shopnow' title='Shop Now'>
-          <BsCart4 className='cart-icon' />
-        </Button>
-      </Link>
-    </div>
-  );
+  ) : <EmptyCart/>
+ 
 }

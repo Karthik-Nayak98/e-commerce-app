@@ -32,14 +32,14 @@ function App() {
                 </Protected>
               }
             />
-            <Route path='mens' element={<Products />} />
-            <Route path='womens' element={<Products />} />
-            <Route path='jewelery' element={<Products />} />
-            <Route path='electronics' element={<Products />} />
-            <Route path='mens/:id' element={<Description />} />
-            <Route path='womens/:id' element={<Description />} />
-            <Route path='jewelery/:id' element={<Description />} />
-            <Route path='electronics/:id' element={<Description />} />
+            <Route path ='mens' element={<Products />} />
+            <Route path ='womens' element={<Products />} />
+            <Route path ='jewelery' element={<Products />} />
+            <Route path ='electronics' element={<Products />} />
+            <Route path ='mens/:id' element={<Description />} />
+            <Route path ='womens/:id' element={<Description />} />
+            <Route path ='jewelery/:id' element={<Description />} />
+            <Route path ='electronics/:id' element={<Description />} />
           </Routes>
         </div>
       </CartContextProvider>
