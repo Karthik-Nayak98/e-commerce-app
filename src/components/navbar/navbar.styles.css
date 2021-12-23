@@ -2,33 +2,26 @@
   position: sticky;
   z-index: 1;
   top: 0px;
-  /* height: 50px; */
   padding: 0.2em 1rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
-  /* align-items: center; */
   background-color: #f8fbf8;
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
-  /* border: 2px solid red; */
 }
 
 .navitems {
   display: flex;
   flex-direction: column;
-  /* flex-direction: row; */
   justify-content: space-around;
   align-items: flex-start;
   width: 100%;
-  /* width: 250px;  */
   color: rgb(111, 14, 180);
   cursor: pointer;
-  /* border: 2px solid red; */
 }
 
 .logo {
-  /* width: 45px; */
   width: 2.5rem;
 }
 
@@ -39,10 +32,6 @@
   font-size: 0.9rem;
   text-decoration: none;
   padding: 0.2rem;
-  /* width: 100%; */
-  /* border: 2px solid red; */
-  /* color: white; */
-  /* background-color: #e0e0e0; */
 }
 
 .navitems li:hover {
@@ -53,12 +42,7 @@
   padding: 4px 10px;
   font-weight: 700;
   font-size: 1.8rem;
-  /* text-align: center; */
-  /* border-radius: 50%; */
-  /* color: white; */
-  /* color: white; */
   color: rgb(111, 14, 180);
-  /* background-color: rgb(111, 14, 180); */
 }
 
 .navitems .user {
