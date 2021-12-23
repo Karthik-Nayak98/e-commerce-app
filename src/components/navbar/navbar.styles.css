@@ -2,28 +2,34 @@
   position: sticky;
   z-index: 1;
   top: 0px;
-  /* width: 100%; */
-  height: 50px;
-  padding: 0 1em;
+  /* height: 50px; */
+  padding: 0.2em 1rem;
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   justify-content: space-between;
-  align-items: center;
+  /* align-items: center; */
   background-color: #f8fbf8;
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
+  /* border: 2px solid red; */
 }
 
 .navitems {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  /* flex-direction: row; */
   justify-content: space-around;
-  align-items: center;
-  width: 15%;
+  align-items: flex-start;
+  width: 100%;
+  /* width: 250px;  */
   color: rgb(111, 14, 180);
   cursor: pointer;
+  /* border: 2px solid red; */
 }
 
 .logo {
-  width: 45px;
+  /* width: 45px; */
+  width: 2.5rem;
 }
 
 .navitems li {
@@ -32,19 +38,33 @@
   text-transform: uppercase;
   font-size: 0.9rem;
   text-decoration: none;
+  padding: 0.2rem;
+  /* width: 100%; */
+  /* border: 2px solid red; */
+  /* color: white; */
+  /* background-color: #e0e0e0; */
+}
+
+.navitems li:hover {
+  background-color: #e0e0e0;
 }
 
 .navitems li.username {
-  /* width: 15px; */
-  /* height: 15px; */
-  padding: 3px 8px;
+  padding: 4px 10px;
   font-weight: 700;
-  font-size: 1.2rem;
-  text-align: center;
-  border-radius: 50%;
-  color: white;
-  background-color: rgb(176, 131, 211);
+  font-size: 1.8rem;
+  /* text-align: center; */
+  /* border-radius: 50%; */
+  /* color: white; */
+  /* color: white; */
+  color: rgb(111, 14, 180);
+  /* background-color: rgb(111, 14, 180); */
 }
+
+.navitems .user {
+  font-size: 1.5rem;
+}
+
 .navicon {
   font-size: 1.1rem;
   margin-bottom: 4px;
@@ -53,9 +73,8 @@
 
 .cartlength {
   position: absolute;
-  padding: 2px;
-  top: -5px;
-  left: 10px;
+  top: -4px;
+  right: -9px;
   z-index: 1;
   width: 20px;
   height: 20px;
@@ -64,4 +83,35 @@
   border-radius: 50%;
   color: white;
   background-color: rgb(111, 14, 180);
+}
+
+.hamburger {
+  position: absolute;
+  top: 0.7rem;
+  right: 1rem;
+}
+
+.active {
+  display: none;
+}
+
+/* Media Queries */
+@media screen and (min-width: 600px) {
+  .navbar {
+    flex-direction: row;
+    align-items: center;
+  }
+  .navitems {
+    width: 275px;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .hamburger {
+    display: none;
+  }
+
+  .active {
+    display: inherit;
+  }
 }
