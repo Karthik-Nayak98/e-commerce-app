@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import Header from '../../components/header/header.component';
@@ -18,6 +18,8 @@ const initialState = {
 
 const SignIn = () => {
   const [form, setForm] = useState(initialState);
+  const [error, setError] = useState('')
+
   const navigate = useNavigate();
   const { state } = useLocation();
   const path = state ? state.path : null;
@@ -27,6 +29,7 @@ const SignIn = () => {
     const inputValue = event.target.value;
 
     setForm({ ...form, [key]: inputValue });
+    setError('')
   }
 
   const handleSubmit = async (event) => {
@@ -35,13 +38,14 @@ const SignIn = () => {
       await signInWithEmail(form.email, form.password);
       navigate(path || '/');
     } catch (err) {
-      console.log(err);
+      setError(err.message.split(':')[1])
     }
   };
 
   return (
     <div className='form__container'>
       <Header header='SIGN IN' />
+      <p className='error'>{error}</p>
       <form className='signin-form' onSubmit={handleSubmit}>
         <InputContainer className='input__container'>
           <FormLabel htmlFor='email' title='Email' />

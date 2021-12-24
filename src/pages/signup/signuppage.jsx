@@ -8,14 +8,19 @@ import FormInput from '../../components/form-input/form-input.component';
 import InputContainer from '../../components/input-container/input-container';
 
 import { createUser } from '../../firebase/firebase-auth';
+import { updateProfile } from 'firebase/auth';
+import { auth } from '../../firebase/firebase.utils'
 
 const initialState = {
   name: '',
   email: '',
   password: '',
 };
+
 function SignUp() {
   const [form, setForm] = useState(initialState);
+  const [error, setError] = useState('');
+
   const navigate = useNavigate();
   const { state } = useLocation();
   const path = state ? state.path : null;
@@ -25,18 +30,26 @@ function SignUp() {
     const inputValue = event.target.value;
 
     setForm({ ...form, [key]: inputValue });
+    setError('')
   }
 
-  function handleSubmit(event) {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    createUser(form.name, form.email, form.password);
-    navigate(path || '/', { replace: true });
-    setForm(initialState);
+    try {
+      await createUser(form.name, form.email, form.password);
+      await updateProfile(auth.currentUser, { displayName: form.name });
+      navigate(path || '/', { replace: true });
+      setForm(initialState);
+    }
+    catch(err){
+      setError(err.message.split(':')[1])
+    }
   }
 
   return (
     <div className='form__container'>
       <Header header='SIGN UP' />
+      <p className='error'>{error}</p>
       <form onSubmit={handleSubmit}>
         <InputContainer className='input__container'>
           <FormLabel htmlFor='text' title='Name' />
@@ -74,7 +87,7 @@ function SignUp() {
         <div className='button__container'>
           <Button
             type='submit'
-            handleClick={handleSubmit}
+            // handleClick={handleSubmit}
             title='Sign up'
             classname='btn-signup'
           />

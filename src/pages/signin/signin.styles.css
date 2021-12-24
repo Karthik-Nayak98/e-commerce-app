@@ -9,6 +9,13 @@
   background-color: rgb(250, 250, 250);
 }
 
+.error {
+  font-size: 0.9rem;
+  text-align: left;
+  padding: 0.5rem 0;
+  color: #e61a1a;
+}
+
 .signin-form {
   display: flex;
   flex-direction: column;
@@ -24,4 +31,5 @@ form .signup {
 .button__container {
   display: flex;
   justify-content: space-between;
+  padding: 1rem 0;
 }
