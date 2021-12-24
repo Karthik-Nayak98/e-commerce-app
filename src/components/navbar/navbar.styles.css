@@ -21,10 +21,6 @@
   cursor: pointer;
 }
 
-.logo {
-  width: 2.5rem;
-}
-
 .navitems li {
   position: relative;
   list-style-type: none;
