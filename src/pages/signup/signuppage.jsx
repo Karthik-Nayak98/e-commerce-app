@@ -9,7 +9,9 @@ import InputContainer from '../../components/input-container/input-container';
 
 import { createUser } from '../../firebase/firebase-auth';
 import { updateProfile } from 'firebase/auth';
-import { auth } from '../../firebase/firebase.utils'
+import { auth, db} from '../../firebase/firebase.utils'
+import { setDoc, doc } from 'firebase/firestore';
+
 
 const initialState = {
   name: '',
@@ -33,23 +35,41 @@ function SignUp() {
     setError('')
   }
 
+  // Creates a initial object for the signed up user.
+  const setInitialCart = async (uid) =>{
+    const userState = {
+      cartItems: [],
+      totalItems: 0,
+      totalPrice: 0,
+    };
+
+    // uid is the document id.
+    const document = doc(db, 'usercart', uid)
+    await setDoc(document, userState)
+  }
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       await createUser(form.name, form.email, form.password);
       await updateProfile(auth.currentUser, { displayName: form.name });
-      navigate(path || '/', { replace: true });
+
+      setInitialCart(auth.currentUser.uid)
       setForm(initialState);
+      navigate(path || '/', { replace: true });
     }
     catch(err){
-      setError(err.message.split(':')[1])
+      if(err.code === 'auth/email-already-in-use')
+        setError('Email is already present.')
+      else if(err.code === 'auth/weak-password')
+        setError('Password should have atleast 6 characters.')
     }
   }
 
   return (
     <div className='form__container'>
       <Header header='SIGN UP' />
-      <p className='error'>{error}</p>
+      {error.length?<p className='error'>{error}</p>:null}
       <form onSubmit={handleSubmit}>
         <InputContainer className='input__container'>
           <FormLabel htmlFor='text' title='Name' />

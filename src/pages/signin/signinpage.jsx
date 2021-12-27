@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import Header from '../../components/header/header.component';
@@ -38,7 +38,10 @@ const SignIn = () => {
       await signInWithEmail(form.email, form.password);
       navigate(path || '/');
     } catch (err) {
-      setError(err.message.split(':')[1])
+      if(err.code === 'auth/wrong-password')
+        setError('Please enter the correct password.')
+      else if(err.code === 'auth/user-not-found')
+        setError('User is not found.')
     }
   };
 
