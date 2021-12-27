@@ -46,7 +46,7 @@ function Navbar() {
   return (
     <nav className='navbar'>
       <figure>
-         <IoBagHandle color='rgb(111,14,180)' size='1.8rem'/>
+         <IoBagHandle color='#222' size='1.8rem'/>
       </figure>
       <div className='hamburger' onClick={toggleNavbar}>
        {!toggle ? <GiHamburgerMenu color='#222' size='1.5rem'/>:
@@ -55,27 +55,25 @@ function Navbar() {
       </div>
        <ul className={toggle? 'navitems': 'navitems active'}>
         <li>
-          <Link style={{ textDecoration: 'none' }} to='/'>
+          <Link to='/'>
             Home
           </Link>
         </li>
         <li>
           {user ? (
             <Link
-              style={{ textDecoration: 'none' }}
               to=''
               onClick={handleClick}>
               SignOut
             </Link>
           ) : (
-            <Link style={{ textDecoration: 'none' }} to='/signin'>
+            <Link to='/signin'>
               SignIn
             </Link>
           )}
         </li>
         <li>
-          <Link to='/cart' style={{textDecoration:'none'}}>
-            Cart {' '}
+          <Link to='/cart'>
             <BsBagCheck className='navicon' />
             {totalItems ? <span className='cartlength'>{totalItems}</span> : ''}
           </Link>

@@ -14,39 +14,45 @@
 .navitems {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: flex-start;
   width: 100%;
-  color: rgb(111, 14, 180);
-  cursor: pointer;
+  color: #222;
 }
 
 .navitems li {
   position: relative;
   list-style-type: none;
   text-transform: uppercase;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   text-decoration: none;
-  padding: 0.2rem;
+  flex: 1 1 auto;
+  padding: 0.2rem 0.1rem;
+  cursor: pointer;
+}
+
+.navitems li a {
+  display: flex;
+  text-align: center;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0.1rem;
+  text-decoration: none;
+  font-weight: 600;
+  color: rgb(111, 14, 180);
 }
 
 .navitems li:hover {
-  background-color: #e0e0e0;
-}
-
-.navitems li.username {
-  padding: 4px 10px;
-  font-weight: 700;
-  font-size: 1.8rem;
-  color: rgb(111, 14, 180);
+  background-color: #eeeaea;
 }
 
 .navitems .user {
   font-size: 1.5rem;
+  color: rgb(111, 14, 180);
 }
 
 .navicon {
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   margin-bottom: 4px;
   vertical-align: middle;
 }
@@ -54,7 +60,7 @@
 .cartlength {
   position: absolute;
   top: -4px;
-  right: -9px;
+  right: 5px;
   z-index: 1;
   width: 20px;
   height: 20px;
@@ -81,8 +87,9 @@
     flex-direction: row;
     align-items: center;
   }
+
   .navitems {
-    width: 275px;
+    max-width: 225px;
     flex-direction: row;
     align-items: center;
   }
