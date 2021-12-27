@@ -1,4 +1,8 @@
-import { createContext, useReducer, useState } from 'react';
+import { createContext, useState, useEffect, useContext } from 'react';
+import { AuthContext } from './authContext';
+import { getCollection } from '../firebase/firebase-firestore'
+import { getDocs,setDoc,doc } from 'firebase/firestore'
+import {db} from '../firebase/firebase.utils'
 
 // const initialState = {
 //   cartItems: [],
@@ -13,6 +17,39 @@ export const CartContextProvider = (props) => {
   const [cartItems, setCartItems] = useState([]);
   const [totalItems, setTotalItems] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
+  const user = useContext(AuthContext)
+
+  useEffect(() => {
+   const getDocuments = async () => {
+      if(user !== null){
+        const collection = getCollection()
+        const allDocuments = await getDocs(collection)
+        
+        // Get the document of the particular user.
+        const cart = allDocuments.docs.filter(doc => doc.id === user.uid);
+       
+        const state = cart[0].data()
+
+        setCartItems(state.cartItems)
+        setTotalItems(state.totalItems)
+        setTotalPrice(state.totalPrice)
+      }
+    }
+    getDocuments()
+  },[user])
+
+  useEffect(() => {
+   const getDocuments = async () => {
+      if(user !== null){
+        await setDoc(doc(db, "usercart", user.uid), {
+          cartItems: cartItems,
+          totalItems: totalItems,
+          totalPrice: totalPrice
+        });
+      }
+    }
+    getDocuments()
+  },[user, cartItems, totalItems, totalPrice])
 
   const getCart = {
     cartItems,
@@ -26,7 +63,6 @@ export const CartContextProvider = (props) => {
   return (
     <CartContext.Provider value={getCart}>
       {props.children}
-      {/* <App /> */}
     </CartContext.Provider>
   );
 };

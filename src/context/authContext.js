@@ -11,7 +11,7 @@ export const AuthContextProvider = (props) => {
     const unsubscribe = onAuthStateChanged(
       auth,
       (user) => {
-        console.log('user in authStateChanged', user);
+        // console.log('user in authStateChanged', user);
         setUser(user);
       },
       []
@@ -20,7 +20,8 @@ export const AuthContextProvider = (props) => {
   }, []);
 
   useEffect(() => {
-    console.log('user value changed', user);
+    if(user !== null)
+      console.log('user value changed', user.uid);
   }, [user]);
   return (
     <AuthContext.Provider value={user}>{props.children}</AuthContext.Provider>

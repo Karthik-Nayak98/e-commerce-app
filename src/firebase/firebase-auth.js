@@ -9,19 +9,6 @@ export const createUser = (name, email, password) => {
   return createUserWithEmailAndPassword(auth, email, password)
 }
 
-// export const createUser = (name, email, password) => {
-//   createUserWithEmailAndPassword(auth, email, password)
-//     .then((userCredential) => {
-//       // const user = userCredential.user;
-//       // console.log('create user', user);
-//       return updateProfile(auth.currentUser, { displayName: name });
-//     })
-//     .then(() => {})
-//     .catch((error) => {
-//       console.log(error);
-//     });
-// };
-
 export const signInWithEmail = (email, password) => {
   return signInWithEmailAndPassword(auth, email, password);
 };
