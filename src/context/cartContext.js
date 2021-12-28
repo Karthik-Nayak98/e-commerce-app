@@ -2,7 +2,7 @@ import { createContext, useState, useEffect, useContext } from 'react';
 import { AuthContext } from './authContext';
 import { getCollection } from '../firebase/firebase-firestore'
 import { getDocs,setDoc,doc } from 'firebase/firestore'
-import {db} from '../firebase/firebase.utils'
+import { db } from '../firebase/firebase.utils'
 
 // const initialState = {
 //   cartItems: [],
@@ -49,7 +49,7 @@ export const CartContextProvider = (props) => {
       }
     }
     getDocuments()
-  },[user, cartItems, totalItems, totalPrice])
+  },[cartItems, totalItems, totalPrice])
 
   const getCart = {
     cartItems,

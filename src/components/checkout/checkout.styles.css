@@ -2,7 +2,7 @@
 .checkout__container {
   width: 70vw;
   max-width: 400px;
-  min-height: 45vh;
+  min-height: 35vh;
   padding: 0.5rem 0.8rem;
   margin: 10px auto 20px;
   background-color: rgb(250, 250, 250);

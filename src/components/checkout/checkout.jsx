@@ -1,9 +1,12 @@
 import React from 'react'
 import Button from '../button/button.component'
+import StripeCheckoutButton from '../stripe-checkout/stripe-checkout-button'
 
 import './checkout.styles.css'
 
 const Checkout =({totalPrice}) => {
+    const price = totalPrice.toFixed(2);
+    const shippingPrice = 40;
     return (
         <div className='checkout__container'>
           <p className='checkout__title'>Order Summary</p>
@@ -14,14 +17,15 @@ const Checkout =({totalPrice}) => {
             </div>
             <div className='shipping'>
               <span>Shipping</span>
-              <span className='totalprice'>$ 0</span>
+              <span className='totalprice'>$ {shippingPrice}.00</span>
             </div>
           </div>
           <div className='grandtotal'>
             <span>Grand total</span>
-            <span className='totalprice'>$ {totalPrice.toFixed(2)}</span>
+            <span className='totalprice'>$ {Number(price) + shippingPrice}</span>
           </div>
-          <Button classname='btn-checkout' title='go to checkout'></Button>
+          {/* <Button classname='btn-checkout' title='go to checkout'></Button> */}
+          <StripeCheckoutButton price={totalPrice + shippingPrice}/>
         </div>
             
     )
