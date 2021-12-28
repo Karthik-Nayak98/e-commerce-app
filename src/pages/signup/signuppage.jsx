@@ -79,6 +79,7 @@ function SignUp() {
             id='text'
             type='text'
             onChange={handleChange}
+            required
           />
         </InputContainer>
 
@@ -90,6 +91,7 @@ function SignUp() {
             id='email'
             type='email'
             onChange={handleChange}
+            required
           />
         </InputContainer>
 
@@ -101,6 +103,7 @@ function SignUp() {
             id='password'
             type='password'
             onChange={handleChange}
+            required
           />
         </InputContainer>
 

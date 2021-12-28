@@ -58,6 +58,7 @@ const SignIn = () => {
             type='email'
             value={form.email}
             onChange={handleChange}
+            required
           />
         </InputContainer>
 
@@ -69,6 +70,7 @@ const SignIn = () => {
             type='password'
             value={form.password}
             onChange={handleChange}
+            required
           />
         </InputContainer>
         <Link to='/signup'>
