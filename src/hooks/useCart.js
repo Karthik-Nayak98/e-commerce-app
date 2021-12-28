@@ -1,14 +1,9 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { CartContext } from '../context/cartContext';
 
 export default function useCart() {
-  const { cartItems, setCartItems, totalPrice, setTotalItems, setTotalPrice } =
+  const { cartItems, setCartItems, setTotalItems, setTotalPrice } =
     useContext(CartContext);
-
-  useEffect(() => {
-    // console.log('cartItems', cartItems);
-    // console.log('totalprice', totalPrice);
-  }, [cartItems, totalPrice]);
 
   function addItemsToCart(product) {
     let updatedCart;
@@ -36,26 +31,3 @@ export default function useCart() {
   }
   return addItemsToCart;
 }
-
-// for (var i = 0; i < cartItems.length; ++i) {
-//   if (cartItems[i].id === product.id) {
-//     const prevCount = cartItems[i].count;
-//     const prevPrice = cartItems[i].price;
-//     const updatedCart = [...cartItems];
-//     updatedCart[i] = {
-//       ...updatedCart[i],
-//       count: Number(prevCount) + 1,
-//       totalPrice: prevPrice + product.price,
-//     };
-//     setTotalPrice((prevPrice) => prevPrice + product.price);
-//     setCartItems(updatedCart);
-//     break;
-//   }
-// }
-
-// // If product is not present in the cart.
-// if (i === cartItems.length) {
-//   const newCartItem = { ...product, count: 1, totalPrice: product.price };
-//   setCartItems([...cartItems, newCartItem]);
-//   setTotalPrice((prevPrice) => prevPrice + product.price);
-// }

@@ -22,7 +22,6 @@
 .cart-icon {
   margin-bottom: 5px;
   vertical-align: middle;
-  /* color: black; */
   font-size: 1.5rem;
   color: rgb(111, 14, 180);
   transition: 0.2s ease-in;
@@ -49,7 +48,6 @@
 .btn-cart:hover .cart-icon,
 .btn-shopnow:hover .cart-icon {
   color: white;
-  /* background-color: white; */
 }
 
 .btn-increment {

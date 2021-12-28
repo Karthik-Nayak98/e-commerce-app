@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { BsCart4 } from 'react-icons/bs';
 
 import Button from '../../components/button/button.component';
-import ShoppingCart from '../../assets/shopping-cart.jpg';
+import ShoppingCart from '../../assets/shopping-cart.png';
 
 import './empty-cart.styles.css'
 

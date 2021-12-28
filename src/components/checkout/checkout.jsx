@@ -1,5 +1,4 @@
 import React from 'react'
-import Button from '../button/button.component'
 import StripeCheckoutButton from '../stripe-checkout/stripe-checkout-button'
 
 import './checkout.styles.css'
@@ -24,7 +23,6 @@ const Checkout =({totalPrice}) => {
             <span>Grand total</span>
             <span className='totalprice'>$ {Number(price) + shippingPrice}</span>
           </div>
-          {/* <Button classname='btn-checkout' title='go to checkout'></Button> */}
           <StripeCheckoutButton price={totalPrice + shippingPrice}/>
         </div>
             

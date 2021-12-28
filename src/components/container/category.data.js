@@ -24,10 +24,3 @@ export const categoryData = [
     url: 'jewelery',
   },
 ];
-
-// {
-//   id: 5,
-//   title: 'WATCHES',
-//   imageUrl: 'https://i.imgur.com/Hv2SSMq.jpg',
-//   url: 'watches',
-// },

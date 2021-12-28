@@ -45,9 +45,11 @@ function Navbar() {
 
   return (
     <nav className='navbar'>
-      <figure>
-         <IoBagHandle color='#222' size='1.8rem'/>
-      </figure>
+      <Link to='/'>
+        <figure>
+          <IoBagHandle color='#222' size='1.8rem'/>
+        </figure>
+      </Link>
       <div className='hamburger' onClick={toggleNavbar}>
        {!toggle ? <GiHamburgerMenu color='#222' size='1.5rem'/>:
        <IoMdClose color='#222' size='1.5rem'/>}
