@@ -25,6 +25,11 @@ const Checkout =({totalPrice}) => {
         <span className='totalprice'>$ {Number(price) + shippingPrice}</span>
       </div>
       <StripeCheckoutButton price={totalPrice + shippingPrice}/>
+      <p className='card-note'>*Please use the following test card for payment.*
+        <br/>
+        4242 4242 4242 4242 - Exp 02/42 - CVV 123
+      </p>
+
     </div>
   )
 }

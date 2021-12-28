@@ -43,6 +43,12 @@
   padding: 0.5rem 1rem;
 }
 
+.card-note {
+  margin: 10px;
+  color: red;
+  font-size: 0.8rem;
+}
+
 @media screen and (min-width: 900px) {
   .checkout__container {
     max-width: 300px;
