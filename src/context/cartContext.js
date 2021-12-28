@@ -1,4 +1,5 @@
-import { createContext, useState, useEffect, useContext } from 'react';
+import React, { createContext, useState, useEffect, useContext } from 'react';
+import PropTypes from 'prop-types'
 import { AuthContext } from './authContext';
 import { getCollection } from '../firebase/firebase-firestore'
 import { getDocs,setDoc,doc } from 'firebase/firestore'
@@ -20,7 +21,7 @@ export const CartContextProvider = (props) => {
   const user = useContext(AuthContext)
 
   useEffect(() => {
-   const getDocuments = async () => {
+    const getDocuments = async () => {
       if(user !== null){
         const collection = getCollection()
         const allDocuments = await getDocs(collection)
@@ -39,9 +40,9 @@ export const CartContextProvider = (props) => {
   },[user])
 
   useEffect(() => {
-   const getDocuments = async () => {
+    const getDocuments = async () => {
       if(user !== null){
-        await setDoc(doc(db, "usercart", user.uid), {
+        await setDoc(doc(db, 'usercart', user.uid), {
           cartItems: cartItems,
           totalItems: totalItems,
           totalPrice: totalPrice
@@ -66,3 +67,8 @@ export const CartContextProvider = (props) => {
     </CartContext.Provider>
   );
 };
+
+
+CartContextProvider.propTypes = {
+  children: PropTypes.element.isRequired
+}

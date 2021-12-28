@@ -9,7 +9,7 @@ import ShoppingCart from '../../assets/shopping-cart.png';
 import './empty-cart.styles.css'
 
 const EmptyCart = ()=> {
-    return (
+  return (
     <div className='empty-cart-container'>
       <img className='shopping-cart' src={ShoppingCart} alt='empty-cart' />
       <p className='empty-cart__text'>
@@ -21,7 +21,7 @@ const EmptyCart = ()=> {
         </Button>
       </Link>
     </div>
-    )
+  )
 }
 
 export default EmptyCart

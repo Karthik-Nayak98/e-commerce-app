@@ -1,12 +1,11 @@
-import { useContext } from 'react';
-import { CartContext } from '../context/cartContext';
+import { useContext } from 'react'
+import { CartContext } from '../context/cartContext'
 
 export default function useCart() {
-  const { cartItems, setCartItems, setTotalItems, setTotalPrice } =
-    useContext(CartContext);
+  const { cartItems, setCartItems, setTotalItems, setTotalPrice } = useContext(CartContext)
 
   function addItemsToCart(product) {
-    let updatedCart;
+    let updatedCart
 
     // Get the index of the item with the id of the product.
     const index = cartItems.findIndex((item) => item.id === product.id);

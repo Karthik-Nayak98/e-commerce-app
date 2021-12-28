@@ -34,7 +34,7 @@ function Navbar() {
   },[width])
 
 
-  const toggleNavbar = () => {
+  const handleToggle = () => {
     setToggle(!toggle)
   };
 
@@ -50,12 +50,12 @@ function Navbar() {
           <IoBagHandle color='#222' size='1.8rem'/>
         </figure>
       </Link>
-      <div className='hamburger' onClick={toggleNavbar}>
-       {!toggle ? <GiHamburgerMenu color='#222' size='1.5rem'/>:
-       <IoMdClose color='#222' size='1.5rem'/>}
-       
+      <div role='button' tabIndex={0} className='hamburger' onClick={handleToggle} onKeyUp={handleToggle}>
+        {!toggle ? 
+          <GiHamburgerMenu color='#222' size='1.5rem'/>:
+          <IoMdClose color='#222' size='1.5rem'/>}
       </div>
-       <ul className={toggle? 'navitems': 'navitems active'}>
+      <ul className={toggle? 'navitems': 'navitems active'}>
         <li>
           <Link to='/'>
             Home
@@ -80,9 +80,10 @@ function Navbar() {
             {totalItems ? <span className='cartlength'>{totalItems}</span> : ''}
           </Link>
         </li>
-        {user ? <li className='username'> 
-       <FaUserCircle className='user'/>
-        </li> : null}
+        {user ? 
+          <li className='username'>
+            <FaUserCircle className='user'/>
+          </li> : null}
       </ul>
     </nav>
   );

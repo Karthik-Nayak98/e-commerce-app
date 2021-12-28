@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 
 import './input-container.styles.css'
 
@@ -7,3 +8,7 @@ const InputContainer = ({children, ...props}) => {
 };
 
 export default InputContainer;
+
+InputContainer.propTypes = {
+  children: PropTypes.element.isRequired
+}

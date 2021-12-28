@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom';
 import './menu-item.styles.css';
 function MenuItem({ title, imageUrl, url }) {
@@ -15,3 +16,9 @@ function MenuItem({ title, imageUrl, url }) {
 }
 
 export default MenuItem;
+
+MenuItem.propTypes = {
+  title: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+}

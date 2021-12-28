@@ -110,7 +110,6 @@ function SignUp() {
         <div className='button__container'>
           <Button
             type='submit'
-            // handleClick={handleSubmit}
             title='Sign up'
             classname='btn-signup'
           />

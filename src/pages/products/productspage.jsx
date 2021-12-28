@@ -30,38 +30,38 @@ function Products() {
 
   return (
     isLoading? (<Spinner/>):(
-    <div>
-      <Header header={`${route.toUpperCase()} CATEGORY`} />
-      <div className='product-container'>
-        {productList.map((item) => (
-          <div key={item.id} className='products'>
-            <div className='product'>
-              <Link to={`/${route}/${item.id}`}>
-                <figure className='product-image'>
-                  <img src={item.image} alt={item.title} />
-                </figure>
-              </Link>
-              <div className='description'>
-                <div className='title' title={item.title}>
-                  {item.title}
-                </div>
-                <div className='price'>
-                  <span className='rupee'>$</span>
-                  {item.price}
+      <div>
+        <Header header={`${route.toUpperCase()} CATEGORY`} />
+        <div className='product-container'>
+          {productList.map((item) => (
+            <div key={item.id} className='products'>
+              <div className='product'>
+                <Link to={`/${route}/${item.id}`}>
+                  <figure className='product-image'>
+                    <img src={item.image} alt={item.title} />
+                  </figure>
+                </Link>
+                <div className='description'>
+                  <div className='title' title={item.title}>
+                    {item.title}
+                  </div>
+                  <div className='price'>
+                    <span className='rupee'>$</span>
+                    {item.price}
+                  </div>
                 </div>
               </div>
+              <Button
+                data-id={`${item.id}`}
+                classname='btn-cart'
+                title='Add to Cart'
+                onClick={handleClick}>
+                <BsCart4 pointerEvents='none' className='cart-icon' />
+              </Button>
             </div>
-            <Button
-              data-id={`${item.id}`}
-              classname='btn-cart'
-              title='Add to Cart'
-              onClick={handleClick}>
-              <BsCart4 pointerEvents='none' className='cart-icon' />
-            </Button>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
     )
   );
 }
