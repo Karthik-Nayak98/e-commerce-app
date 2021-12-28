@@ -9,11 +9,12 @@ import Header from '../../components/header/header.component';
 import Button from '../../components/button/button.component';
 
 import './products.styles.css';
+import Spinner from '../../components/spinners/spinner.jsx';
 
 function Products() {
   const params = useLocation();
   const route = params.pathname.split('/')[1];
-  const productList = useProducts(route);
+  const [productList, isLoading] = useProducts(route);
   const addItemstoCart = useCart();
 
   function handleClick(event) {
@@ -28,6 +29,7 @@ function Products() {
   }
 
   return (
+    isLoading? (<Spinner/>):(
     <div>
       <Header header={`${route.toUpperCase()} CATEGORY`} />
       <div className='product-container'>
@@ -60,6 +62,7 @@ function Products() {
         ))}
       </div>
     </div>
+    )
   );
 }
 

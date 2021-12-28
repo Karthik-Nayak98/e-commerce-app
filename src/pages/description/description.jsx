@@ -10,17 +10,18 @@ import Header from '../../components/header/header.component';
 import Button from '../../components/button/button.component';
 
 import './description.styles.css';
+import Spinner from '../../components/spinners/spinner';
 
 function Description() {
   const { id } = useParams();
-  const product = useProducts(`${ALL_PRODUCTS}/${id}`);
+  const [product,isLoading] = useProducts(`${ALL_PRODUCTS}/${id}`);
   const addItemstoCart = useCart();
 
   function handleClick(event) {
     addItemstoCart(product);
   }
 
-  return Object.keys(product).length ? (
+  return isLoading? (<Spinner/>):(
     <div>
       <Header header='Product Description' />
       <div className='product__container'>
@@ -50,9 +51,7 @@ function Description() {
         </div>
       </div>
     </div>
-  ) : (
-    <p>Loading...</p>
-  );
+  ) 
 }
 
 export default Description;
