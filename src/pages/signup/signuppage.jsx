@@ -6,6 +6,7 @@ import Button from '../../components/button/button.component';
 import FormLabel from '../../components/form-label/form-label.component';
 import FormInput from '../../components/form-input/form-input.component';
 import InputContainer from '../../components/input-container/input-container';
+import Spinner from '../../components/spinners/spinner'
 
 import { createUser } from '../../firebase/firebase-auth';
 import { updateProfile } from 'firebase/auth';
@@ -20,6 +21,7 @@ const initialState = {
 };
 
 function SignUp() {
+  const [isLoading, setIsLoading] = useState(false);
   const [form, setForm] = useState(initialState);
   const [error, setError] = useState('');
 
@@ -50,10 +52,11 @@ function SignUp() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setIsLoading(true)
     try {
       await createUser(form.name, form.email, form.password);
       await updateProfile(auth.currentUser, { displayName: form.name });
-
+      setIsLoading(false);
       setInitialCart(auth.currentUser.uid)
       setForm(initialState);
       navigate(path || '/', { replace: true });
@@ -63,6 +66,7 @@ function SignUp() {
         setError('Email is already present.')
       else if(err.code === 'auth/weak-password')
         setError('Password should have atleast 6 characters.')
+      setIsLoading(false)
     }
   }
 
@@ -107,11 +111,13 @@ function SignUp() {
           />
         </InputContainer>
 
+        {isLoading? <Spinner/>:null}
         <div className='button__container'>
           <Button
             type='submit'
             title='Sign up'
-            classname='btn-signup'
+            classname={`btn-signup ${isLoading? 'disable':''}`}
+            disabled={isLoading}
           />
         </div>
       </form>

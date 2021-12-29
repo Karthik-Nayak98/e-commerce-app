@@ -6,6 +6,7 @@ import Button from '../../components/button/button.component';
 import InputContainer from '../../components/input-container/input-container';
 import FormInput from '../../components/form-input/form-input.component';
 import FormLabel from '../../components/form-label/form-label.component';
+import Spinner from '../../components/spinners/spinner';
 
 import { signInWithEmail } from '../../firebase/firebase-auth';
 
@@ -17,6 +18,7 @@ const initialState = {
 };
 
 const SignIn = () => {
+  const [isLoading, setIsLoading] = useState(false)
   const [form, setForm] = useState(initialState);
   const [error, setError] = useState('')
 
@@ -34,14 +36,17 @@ const SignIn = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setIsLoading(true)
     try {
       await signInWithEmail(form.email, form.password);
+      setIsLoading(false)
       navigate(path || '/');
     } catch (err) {
       if(err.code === 'auth/wrong-password')
         setError('Please enter the correct password.')
       else if(err.code === 'auth/user-not-found')
         setError('User is not found.')
+      setIsLoading(false)
     }
   };
 
@@ -76,8 +81,14 @@ const SignIn = () => {
         <Link to='/signup'>
           <p className='signup'>Do not have an account? Register here!!</p>
         </Link>
+        {isLoading? <Spinner/>:null}
         <div className='button__container'>
-          <Button type='submit' title='Sign in' classname='btn-signup' />
+          <Button
+            type='submit'
+            title='Sign in'
+            classname={`btn-signup ${isLoading? 'disable':''}`}
+            disabled={isLoading}
+          />
         </div>
       </form>
     </div>
