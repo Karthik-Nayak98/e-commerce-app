@@ -70,5 +70,5 @@ export const CartContextProvider = (props) => {
 
 
 CartContextProvider.propTypes = {
-  children: PropTypes.element.isRequired
+  children: PropTypes.node.isRequired
 }

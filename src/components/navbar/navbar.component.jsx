@@ -47,12 +47,12 @@ function Navbar() {
     <nav className='navbar'>
       <Link to='/'>
         <figure>
-          <IoBagHandle color='#222' size='1.8rem'/>
+          <IoBagHandle color='#222' size='2rem'/>
         </figure>
       </Link>
       <div role='button' tabIndex={0} className='hamburger' onClick={handleToggle} onKeyUp={handleToggle}>
         {!toggle ? 
-          <GiHamburgerMenu color='#222' size='1.5rem'/>:
+          <GiHamburgerMenu color='#222' size='2rem'/>:
           <IoMdClose color='#222' size='1.5rem'/>}
       </div>
       <ul className={toggle? 'navitems': 'navitems active'}>

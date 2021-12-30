@@ -13,6 +13,7 @@ import { updateProfile } from 'firebase/auth';
 import { auth, db} from '../../firebase/firebase.utils'
 import { setDoc, doc } from 'firebase/firestore';
 
+import '../signin/signin.styles.css'
 
 const initialState = {
   name: '',
