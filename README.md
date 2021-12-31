@@ -51,7 +51,7 @@ A E-Commerce project which has different features such as:
 ---
 👤 **Karthik Nayak**
 - Twitter - [@KarthikNayak98](https://twitter.com/KarthikNayak98)
-- LinkedIn - [Karthik Nayak](www.linkedin.com/in/karthiknayak98)
+- LinkedIn - [Karthik Nayak](https://www.linkedin.com/in/karthiknayak98)
 
 ## 📝 License
 
