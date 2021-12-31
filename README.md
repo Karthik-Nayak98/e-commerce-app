@@ -1,70 +1,59 @@
-# Getting Started with Create React App
+# E-Commerce webapp
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align='center'><img src='https://user-images.githubusercontent.com/39642646/147818627-02a4ef44-f2db-42f4-8f2b-4d769d91b839.jpg'/></p>
 
-## Available Scripts
+<p align='center'>
+  <img src='https://img.shields.io/github/license/karthik-nayak98/e-commerce-app?color=blue'/>
+  <img src='https://img.shields.io/badge/React-17.0.2+-61DBFB?&logo=react&alt=%22react%16version%22'/>
+  <img src='https://img.shields.io/github/last-commit/karthik-nayak98/e-commerce-app'/>
+</p>
 
-In the project directory, you can run:
+## 📋 Description
 
-### `npm start`
+A E-Commerce project which has different features such as:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- List different products.
+- Cartpage to store cart items.
+- SignIn and SignUp.
+- Payment gateway
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 🚀 Installation
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Install [nodejs](https://nodejs.org/en/)
+1. Clone project using the command `git clone <repo-url>`
+1. Install all the dependencies using `npm install`
+1. Run the project using `npm start`
 
-### `npm run build`
+> **Note:** _Create a .env file to store the keys of firebase and stripe_
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🖥️ Technologies Used
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- [ReactJS](https://reactjs.org/)
+- [React Router](https://reactrouter.com/)
+- [Firebase](https://firebase.google.com/)
+- [Stripe API](https://stripe.com/docs/stripe-js/react)
+- [FakeStore API](https://fakestoreapi.com)
 
-### `npm run eject`
+## 📸 Screenshots
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+---
+![homepage](https://user-images.githubusercontent.com/39642646/147818728-0f69a71d-3aad-4228-b0b3-adb19fecbe2f.jpg)
+![products](https://user-images.githubusercontent.com/39642646/147818731-06ca63d1-c699-4722-8987-5e33dc8a2aa9.jpg)
+![signin](https://user-images.githubusercontent.com/39642646/147818732-ad53e406-33cd-46b5-83ff-552bf28bf5f0.jpg)
+![cartitems](https://user-images.githubusercontent.com/39642646/147818724-2926a1be-7583-4ede-9a2a-16834ae408d1.jpg)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 👨 Author Info
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+---
+👤 **Karthik Nayak**
+- Twitter - [@KarthikNayak98](https://twitter.com/KarthikNayak98)
+- LinkedIn - [Karthik Nayak](www.linkedin.com/in/karthiknayak98)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## 📝 License
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Copyright © 2021 [Karthik Nayak](https://github.com/karthik-nayak98).<br />
+This project is [MIT](https://github.com/Karthik-Nayak98/e-commerce-app/blob/main/LICENSE) licensed.
