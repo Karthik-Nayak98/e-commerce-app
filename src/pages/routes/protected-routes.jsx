@@ -1,23 +1,22 @@
-import React, { useContext } from 'react';
-import { Navigate, useLocation } from 'react-router-dom';
+import React from 'react'
+import { Navigate, useLocation } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
-import { AuthContext } from '../../context/authContext';
+import { useSelector } from 'react-redux'
 
 const Protected = ({ children }) => {
-  const user = useContext(AuthContext);
-  const location = useLocation();
+  const { uid } = useSelector((state) => state.user)
+  const location = useLocation()
 
-  return user ? (
+  return uid ? (
     children
   ) : (
     <Navigate to='/signin' replace={true} state={{ path: location.pathname }} />
-  );
-};
+  )
+}
 
-export default Protected;
-
+export default Protected
 
 Protected.propTypes = {
-  children: PropTypes.element.isRequired
+  children: PropTypes.element.isRequired,
 }

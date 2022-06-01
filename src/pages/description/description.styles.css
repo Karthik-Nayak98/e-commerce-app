@@ -9,7 +9,7 @@
   box-shadow: 0px 4px 15px 1px rgb(212, 212, 212);
 }
 
-.product__image {
+.product__image img {
   height: 75vh;
   padding: 0.7rem;
 }

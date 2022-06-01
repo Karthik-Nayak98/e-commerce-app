@@ -1,29 +1,51 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
-import { BsCart4, BsStarFill } from 'react-icons/bs';
+import React from 'react'
+import { useParams } from 'react-router-dom'
+import { BsCart4, BsStarFill } from 'react-icons/bs'
 
-import { ALL_PRODUCTS } from '../../constants/apiurl';
-import useProducts from '../../hooks/useProducts';
-import useCart from '../../hooks/useCart';
+import { ALL_PRODUCTS } from '../../constants/apiurl'
+import useProducts from '../../hooks/useProducts'
 
-import Header from '../../components/header/header.component';
-import Button from '../../components/button/button.component';
+import Header from '../../components/header/header.component'
+import Button from '../../components/button/button.component'
 
-import './description.styles.css';
-import Spinner from '../../components/spinners/spinner';
+import './description.styles.css'
+import Spinner from '../../components/spinners/spinner'
+import {
+  addItem,
+  incrementItemCount,
+  incrementTotalPrice,
+} from '../../redux/slice/cartSlice'
+import { toast, ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
+import { useDispatch } from 'react-redux'
 
 function Description() {
-  const { id } = useParams();
-  const [product,isLoading] = useProducts(`${ALL_PRODUCTS}/${id}`);
-  const addItemstoCart = useCart();
+  const { id } = useParams()
+  const [product, isLoading] = useProducts(`${ALL_PRODUCTS}/${id}`)
+  const dispatch = useDispatch()
 
   function handleClick(event) {
-    addItemstoCart(product);
+    dispatch(addItem(product))
+    dispatch(incrementItemCount(1))
+    dispatch(incrementTotalPrice(product.price))
+    toast.success('Item added to cart', {
+      position: 'top-right',
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    })
   }
 
-  return isLoading? (<Spinner/>):(
+  return isLoading ? (
+    <Spinner />
+  ) : (
     <div>
       <Header header='Product Description' />
+      <ToastContainer />
       <div className='product__container'>
         <figure className='product__image'>
           <img src={product.image} alt={product.title} />
@@ -51,7 +73,7 @@ function Description() {
         </div>
       </div>
     </div>
-  ) 
+  )
 }
 
-export default Description;
+export default Description

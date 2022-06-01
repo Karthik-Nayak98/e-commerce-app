@@ -46,6 +46,10 @@
   object-fit: cover;
   padding: 0.7rem;
 }
+.cart-product-image img {
+  width: 90%;
+  height: 90%;
+}
 
 .cart-product {
   display: flex;
