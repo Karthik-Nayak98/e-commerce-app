@@ -7,13 +7,15 @@ import { setUser } from '../redux/slice/userSlice';
 const useUser = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      user
-        ? dispatch(setUser(user.refreshToken))
-        : dispatch(setUser(undefined));
-    });
+    const unsubscribe = onAuthStateChanged(
+      auth,
+      (user) => {
+        user ? dispatch(setUser(user.uid)) : dispatch(setUser(undefined));
+      },
+      []
+    );
 
-    return () => unsubscribe;
+    return unsubscribe;
   }, [dispatch]);
 };
 

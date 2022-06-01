@@ -20,7 +20,6 @@ export default function useProducts(apiurl) {
     };
 
     const matched_route = Object.keys(urls).filter((route) => {
-      // console.log(route.toLowerCase().match(apiurl));
       return route.toLowerCase().match(apiurl);
     });
 
@@ -34,5 +33,5 @@ export default function useProducts(apiurl) {
     fetchProducts(API_URL);
   }, [apiurl]);
 
-  return [product,isLoading]
+  return [product, isLoading];
 }
