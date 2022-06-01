@@ -15,6 +15,7 @@ A E-Commerce project which has different features such as:
 - List different products.
 - Cartpage to store cart items.
 - SignIn and SignUp.
+- SignIn as Guest user.
 - Payment gateway
 
 ## 🚀 Installation
@@ -41,6 +42,7 @@ A E-Commerce project which has different features such as:
 ## 📸 Screenshots
 
 ---
+
 ![homepage](https://user-images.githubusercontent.com/39642646/147818728-0f69a71d-3aad-4228-b0b3-adb19fecbe2f.jpg)
 ![products](https://user-images.githubusercontent.com/39642646/147818731-06ca63d1-c699-4722-8987-5e33dc8a2aa9.jpg)
 ![signin](https://user-images.githubusercontent.com/39642646/147818732-ad53e406-33cd-46b5-83ff-552bf28bf5f0.jpg)
@@ -49,11 +51,14 @@ A E-Commerce project which has different features such as:
 ## 👨 Author Info
 
 ---
+
 👤 **Karthik Nayak**
+
 - Twitter - [@KarthikNayak98](https://twitter.com/KarthikNayak98)
 - LinkedIn - [Karthik Nayak](https://www.linkedin.com/in/karthiknayak98)
 
 ## 📝 License
 
-Copyright © 2021 [Karthik Nayak](https://github.com/karthik-nayak98).<br />
-This project is [MIT](https://github.com/Karthik-Nayak98/e-commerce-app/blob/main/LICENSE) licensed.
+Copyright © 2021 [Karthik Nayak](https://github.com/karthik-nayak98).<br /> This
+project is [MIT](https://github.com/Karthik-Nayak98/e-commerce-app/blob/main/LICENSE)
+licensed.
