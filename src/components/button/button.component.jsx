@@ -1,5 +1,5 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 import './button.styles.css';
 
 export default function Button({ classname, title, children, ...otherProps }) {
@@ -12,6 +12,6 @@ export default function Button({ classname, title, children, ...otherProps }) {
 
 Button.propTypes = {
   title: PropTypes.string.isRequired,
-  children: PropTypes.object.isRequired,
-  classname: PropTypes.string.isRequired
-}
+  children: PropTypes.object,
+  classname: PropTypes.string.isRequired,
+};
