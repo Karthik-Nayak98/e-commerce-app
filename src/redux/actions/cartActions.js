@@ -4,6 +4,7 @@ import {
   incrementItemCount,
   incrementTotalPrice,
   setCart,
+  setWishlist,
 } from '../slice/cartSlice';
 
 export const getFirebaseItems = (uid) => {
@@ -24,6 +25,7 @@ export const getFirebaseItems = (uid) => {
       if (uid !== null) {
         const data = await fetchData();
         dispatch(setCart(data.cartItems));
+        dispatch(setWishlist(data.wishlist));
         dispatch(incrementItemCount(data.totalItems));
         dispatch(incrementTotalPrice(data.totalPrice));
       }
@@ -33,12 +35,13 @@ export const getFirebaseItems = (uid) => {
   };
 };
 
-export const setFirebaseItems = (cartItems, totalItems, totalPrice, uid) => {
+export const setFirebaseItems = (cartItems, wishlist, totalItems, totalPrice) => {
   return async (dispatch, getState) => {
     const uid = getState().user.uid;
     const putData = async () => {
       await setDoc(doc(db, 'usercart', uid), {
         cartItems: cartItems || [],
+        wishlist: wishlist || [],
         totalItems: totalItems || 0,
         totalPrice: totalPrice || 0,
       });
