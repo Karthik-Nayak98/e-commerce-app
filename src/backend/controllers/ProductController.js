@@ -41,7 +41,6 @@ export const getAllProductsByCategoryHandler = function (schema, request) {
 
 export const getProductHandler = function (schema, request) {
   const productId = request.params.productId;
-  console.log('productId', productId);
   try {
     const product = schema.products.findBy({ id: productId });
     return new Response(200, {}, { product });
