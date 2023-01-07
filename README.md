@@ -14,8 +14,10 @@ A E-Commerce project which has different features such as:
 
 - List different products.
 - Cartpage to store cart items.
-- SignIn and SignUp.
-- SignIn as Guest user.
+- Description of products
+- Login and SignUp.
+- Login as Guest user.
+- Wishlist items
 - Payment gateway
 
 ## 🚀 Installation
@@ -35,18 +37,19 @@ A E-Commerce project which has different features such as:
 
 - [ReactJS](https://reactjs.org/)
 - [React Router](https://reactrouter.com/)
+- [Reduct Toolkit](https://redux-toolkit.js.org/)
 - [Firebase](https://firebase.google.com/)
 - [Stripe API](https://stripe.com/docs/stripe-js/react)
-- [FakeStore API](https://fakestoreapi.com)
 
 ## 📸 Screenshots
 
 ---
 
-![homepage](https://user-images.githubusercontent.com/39642646/147818728-0f69a71d-3aad-4228-b0b3-adb19fecbe2f.jpg)
-![products](https://user-images.githubusercontent.com/39642646/147818731-06ca63d1-c699-4722-8987-5e33dc8a2aa9.jpg)
-![signin](https://user-images.githubusercontent.com/39642646/147818732-ad53e406-33cd-46b5-83ff-552bf28bf5f0.jpg)
-![cartitems](https://user-images.githubusercontent.com/39642646/147818724-2926a1be-7583-4ede-9a2a-16834ae408d1.jpg)
+![homepage](https://user-images.githubusercontent.com/39642646/211143397-56ce41ce-8791-424e-b538-cc2806467cd8.png)
+![login](https://user-images.githubusercontent.com/39642646/211143402-8e459c22-8a85-48ff-b202-19c97c11d5ea.png)
+![products](https://user-images.githubusercontent.com/39642646/211143392-00170484-c8a1-4551-9323-b44d96f8987e.png)
+![cart](https://user-images.githubusercontent.com/39642646/211143383-0a3f3940-4391-459f-ab45-1289bee757ea.png)
+![wishlist](https://user-images.githubusercontent.com/39642646/211143404-5aff17db-e865-4c0d-98d1-ce471461d52c.png)
 
 ## 👨 Author Info
 
