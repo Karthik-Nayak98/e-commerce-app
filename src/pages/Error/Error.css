@@ -1,0 +1,23 @@
+h1.error__heading{
+  font-size:6rem;
+}
+
+h2.error__side-heading{
+  font-size:3rem;
+}
+
+p.error__text{
+  font-size:1.5rem;
+}
+
+.back_button{
+  background-color:#720eb4;;
+  color:white;
+  font-weight: 600;
+  display:inline-block;
+  border-radius: 5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding:8px 12px;
+  margin: 1rem;
+}

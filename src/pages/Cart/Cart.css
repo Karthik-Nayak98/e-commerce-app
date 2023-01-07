@@ -1,0 +1,115 @@
+.cart__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0.8rem;
+  margin: 0 auto;
+  gap: 0.5rem;
+  font-size: 1em;
+}
+
+.cart-product__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  width: 85vw;
+  max-width: 600px;
+  margin: 10px auto;
+  background-color: rgb(250, 250, 250);
+  border-radius: 10px;
+  box-shadow: 0 2px 1px 2px rgb(236, 236, 236);
+}
+
+.cart-product__count {
+  align-self: flex-start;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 1rem;
+}
+
+.cart__products {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  max-width: 100%;
+  border-bottom: 1px solid rgb(146, 146, 146);
+  padding: 4px;
+}
+
+.cart-product-image {
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+}
+.cart-product-image img {
+  width: 90%;
+  height: 90%;
+}
+
+.cart-product {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 400px;
+  gap: 0.7rem;
+  flex: 1 1 auto;
+  padding: 0.5rem 0;
+}
+
+.cart-product__counter {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.9rem;
+  align-items: center;
+}
+
+.product-title {
+  text-align: left;
+  font-size: 0.9em;
+  font-weight: 500;
+  color: rgb(111, 14, 180);
+}
+
+.product-price {
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.cart-product__price {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 0.3rem;
+}
+
+/* Media Queries  */
+@media screen and (min-width: 900px) {
+  .cart__container {
+    flex-direction: row;
+    max-width: 85vw;
+  }
+
+  .cart-product__container {
+    width: 50vw;
+  }
+
+  .product-title,
+  .product-price {
+    font-size: 1.1rem;
+  }
+
+  .cart-product__price {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 75%;
+    max-width: 250px;
+  }
+}
