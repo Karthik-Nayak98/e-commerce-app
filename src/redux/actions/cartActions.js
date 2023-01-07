@@ -39,6 +39,8 @@ export const setFirebaseItems = (cartItems, wishlist, totalItems, totalPrice) =>
   return async (dispatch, getState) => {
     const uid = getState().user.uid;
     const putData = async () => {
+      // If the user is signed in  set cart to cart items.
+      // Else to empty values
       await setDoc(doc(db, 'usercart', uid), {
         cartItems: cartItems || [],
         wishlist: wishlist || [],
