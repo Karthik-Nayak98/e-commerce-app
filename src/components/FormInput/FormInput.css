@@ -1,0 +1,11 @@
+input[type='text'],
+input[type='email'],
+input[type='password'] {
+  align-self: center;
+  width: 100%;
+  padding: 12px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  text-align: left;
+}

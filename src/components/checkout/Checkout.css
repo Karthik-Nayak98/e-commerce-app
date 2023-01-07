@@ -1,0 +1,66 @@
+/* Checkout Section Styles */
+.checkout__container {
+  max-width: 400px;
+  min-height: 35vh;
+  padding: 0.5rem 0.8rem;
+  margin: 10px auto 20px;
+  background-color: rgb(250, 250, 250);
+  border-radius: 10px;
+  box-shadow: 0 2px 1px 2px rgb(236, 236, 236);
+}
+
+.checkout__title {
+  margin: 15px 10px;
+  color: rgb(111, 14, 180);
+  text-align: left;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.checkout-price__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 0.6rem;
+  min-height: 10vh;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgb(146, 146, 146);
+}
+
+.subtotal,
+.shipping,
+.grandtotal {
+  display: flex;
+  font-size: 0.9rem;
+  padding: 0 1rem;
+  justify-content: space-between;
+  text-transform: capitalize;
+}
+
+.grandtotal {
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+}
+
+div.card-note {
+  background-color: rgb(88, 148, 213);
+  padding: 14px 20px;
+  margin-top: 6px;
+  color: white;
+  font-size: 0.8rem;
+  border-radius: 6px;
+}
+
+.icon {
+  display: inline;
+  position: absolute;
+  padding: 1px;
+  margin-left: -18px;
+  margin-top: 2px;
+}
+
+@media screen and (min-width: 900px) {
+  .checkout__container {
+    max-width: 350px;
+  }
+}

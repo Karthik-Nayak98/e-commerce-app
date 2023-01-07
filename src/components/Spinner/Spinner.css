@@ -1,0 +1,21 @@
+.spinner {
+  padding: 20px;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  margin: 0 auto;
+  border: 6px solid #e6e6e6;
+  border-radius: 50%;
+  border-top: 6px solid rgb(114, 14, 180);
+  -webkit-animation: spin 1s linear infinite; /* Safari */
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
