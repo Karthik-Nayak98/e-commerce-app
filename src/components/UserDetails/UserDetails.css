@@ -1,0 +1,32 @@
+.modal {
+  z-index: 10;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(249, 249, 249);
+  padding: 1rem 2rem;
+  border-radius: 10px;
+}
+
+.close-icon {
+  position: absolute;
+  top: 4px;
+  right: 8px;
+  cursor: pointer;
+}
+
+.hide {
+  display: none;
+}
+
+.user-container {
+  text-align: left;
+}
+.user__label {
+  margin: 12px 4px;
+  font-weight: 600;
+}
+.user__info {
+  text-transform: capitalize;
+}
