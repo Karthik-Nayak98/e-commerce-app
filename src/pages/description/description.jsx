@@ -12,7 +12,8 @@ import {
   incrementItemCount,
   incrementTotalPrice,
 } from '../../redux/slice/cartSlice';
-import './description.styles.css';
+
+import './Description.css';
 
 import { useDispatch } from 'react-redux';
 import useToast from '../../hooks/useToast';
