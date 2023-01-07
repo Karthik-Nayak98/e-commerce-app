@@ -1,62 +1,75 @@
-import React, { lazy, Suspense, useEffect } from 'react'
-import { Route, Routes } from 'react-router-dom'
+import React, { useEffect } from 'react';
+import { Route, Routes } from 'react-router-dom';
 
-import Spinner from './components/spinners/spinner'
+import { onAuthStateChanged } from 'firebase/auth';
+import { useDispatch, useSelector } from 'react-redux';
+import { auth } from './firebase/firebase.utils';
+import { getFirebaseItems, setFirebaseItems } from './redux/actions/cartActions';
+import { setUser } from './redux/slice/userSlice';
 
-import { auth } from './firebase/firebase.utils'
-import { onAuthStateChanged } from 'firebase/auth'
-import { setUser } from './redux/slice/userSlice'
-import { useSelector, useDispatch } from 'react-redux'
-import { getFirebaseItems, setFirebaseItems } from './redux/actions/cartActions'
+import {
+  emptyCart,
+  emptyWishlist,
+  setTotalItems,
+  setTotalPrice,
+} from './redux/slice/cartSlice';
 
-import './App.css'
-import { emptyCart, setTotalItems, setTotalPrice } from './redux/slice/cartSlice'
+import './App.css';
+import { Navbar, UserDetails } from './components';
+import {
+  Cart,
+  Description,
+  Error,
+  Home,
+  Login,
+  Products,
+  Protected,
+  SignUp,
+  Wishlist,
+} from './pages';
 
-const Homepage = lazy(() => import('./pages/homepage/homepage'))
-const Products = lazy(() => import('./pages/products/productspage'))
-const Description = lazy(() => import('./pages/description/description'))
-const SignIn = lazy(() => import('./pages/signin/signinpage'))
-const SignUp = lazy(() => import('./pages/signup/signuppage'))
-const Cart = lazy(() => import('./pages/cart/cartpage'))
-const Navbar = lazy(() => import('./components/navbar/navbar.component'))
-const Protected = lazy(() => import('./pages/routes/protected-routes'))
+import Mockman from 'mockman-js';
 
 function App() {
-  const dispatch = useDispatch()
-  const { uid } = useSelector((state) => state.user)
-  const { cartItems, totalItems, totalPrice } = useSelector((state) => state.cart)
+  const dispatch = useDispatch();
+  const { uid } = useSelector((state) => state.user);
+  const { wishlist, cartItems, totalItems, totalPrice } = useSelector(
+    (state) => state.cart
+  );
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(
       auth,
       (user) => {
         if (user) {
-          dispatch(setUser(user.uid))
-          dispatch(getFirebaseItems(uid))
+          dispatch(setUser(user.uid));
+          dispatch(getFirebaseItems(uid));
         } else {
-          dispatch(setUser(null))
-          dispatch(emptyCart([]))
-          dispatch(setTotalItems(0))
-          dispatch(setTotalPrice(0))
+          dispatch(setUser(null));
+          dispatch(emptyCart([]));
+          dispatch(emptyWishlist([]));
+          dispatch(setTotalItems(0));
+          dispatch(setTotalPrice(0));
         }
       },
       []
-    )
-    return unsubscribe
-  }, [dispatch, uid])
+    );
+    return unsubscribe;
+  }, [dispatch, uid]);
 
   useEffect(() => {
-    dispatch(setFirebaseItems(cartItems, totalItems, totalPrice))
-  }, [dispatch, cartItems, totalItems, totalPrice])
+    dispatch(setFirebaseItems(cartItems, wishlist, totalItems, totalPrice));
+  }, [dispatch, cartItems, totalItems, wishlist, totalPrice]);
 
   return (
-    <Suspense fallback={<Spinner />}>
+    <>
       <Navbar />
+      <UserDetails />
       <div className='App'>
         <Routes>
-          <Route path='/' element={<Homepage />} />
-          <Route path='signin' element={<SignIn />} />
-          <Route path='signup' element={<SignUp />} />
+          <Route path='/' element={<Home />} />
+          <Route path='/signin' element={<Login />} />
+          <Route path='/signup' element={<SignUp />} />
           <Route
             path='/cart'
             element={
@@ -65,18 +78,23 @@ function App() {
               </Protected>
             }
           />
-          <Route path='mens' element={<Products />} />
-          <Route path='womens' element={<Products />} />
-          <Route path='jewelery' element={<Products />} />
-          <Route path='electronics' element={<Products />} />
-          <Route path='mens/:id' element={<Description />} />
-          <Route path='womens/:id' element={<Description />} />
-          <Route path='jewelery/:id' element={<Description />} />
-          <Route path='electronics/:id' element={<Description />} />
+          <Route
+            path='/wishlist'
+            element={
+              <Protected>
+                <Wishlist />
+              </Protected>
+            }
+          />
+
+          <Route path='category/:categoryId' element={<Products />} />
+          <Route path='/product/:id' element={<Description />} />
+          <Route path='/mockman' element={<Mockman />} />
+          <Route path='*' element={<Error />} />
         </Routes>
       </div>
-    </Suspense>
-  )
+    </>
+  );
 }
 
-export default App
+export default App;
