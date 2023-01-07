@@ -1,16 +1,15 @@
 .navbar {
   position: sticky;
   z-index: 1;
-  top: 0px;
+  top: 0;
   padding: 0.2em 1rem;
   min-height: 10vh;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  /* justify-content: space-between; */
   justify-content: center;
   background-color: #f8fbf8;
-  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 }
 
 .navitems {
@@ -57,6 +56,7 @@
   font-size: 1.3rem;
   margin-bottom: 4px;
   vertical-align: middle;
+  outline: none;
 }
 
 .cartlength {
@@ -92,7 +92,7 @@
   }
 
   .navitems {
-    max-width: 225px;
+    max-width: 250px;
     flex-direction: row;
     align-items: center;
   }

@@ -1,44 +1,42 @@
-import React, { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
-import { GiHamburgerMenu } from 'react-icons/gi'
-import { FaUserCircle } from 'react-icons/fa'
-import { IoMdClose } from 'react-icons/io'
-import { IoBagHandle } from 'react-icons/io5'
-import { BsBagCheck } from 'react-icons/bs'
+import { BsBagCheck, BsHeartFill } from 'react-icons/bs';
+import { FaUserCircle } from 'react-icons/fa';
+import { GiHamburgerMenu } from 'react-icons/gi';
+import { IoMdClose } from 'react-icons/io';
+import { IoBagHandle } from 'react-icons/io5';
 
-import { userSignOut } from '../../firebase/firebase-auth'
-
-import './navbar.styles.css'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux';
+import { setShow } from '../../redux/slice/userSlice';
+import './navbar.styles.css';
 
 function Navbar() {
-  const [toggle, setToggle] = useState(false)
-  const [width, setWidth] = useState(0)
+  const [toggle, setToggle] = useState(false);
+  const [width, setWidth] = useState(0);
 
-  const { totalItems } = useSelector((state) => state.cart)
-  const { uid } = useSelector((state) => state.user)
-  const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const { cartItems, wishlist } = useSelector((state) => state.cart);
+  const { uid, show } = useSelector((state) => state.user);
 
   useEffect(() => {
     const handleRezize = () => {
-      setWidth(window.innerWidth)
-      if (width > 600) setToggle(false)
-    }
-    window.addEventListener('resize', handleRezize)
+      setWidth(window.innerWidth);
+      if (width > 600) setToggle(false);
+    };
+    window.addEventListener('resize', handleRezize);
     return () => {
-      window.removeEventListener('resize', handleRezize)
-    }
-  }, [width])
+      window.removeEventListener('resize', handleRezize);
+    };
+  }, [width]);
 
   const handleToggle = () => {
-    setToggle(!toggle)
-  }
+    setToggle(!toggle);
+  };
 
-  const handleClick = () => {
-    userSignOut()
-    navigate('/', { replace: true })
-  }
+  const handleUser = () => {
+    dispatch(setShow(!show));
+  };
 
   return (
     <nav className='navbar'>
@@ -64,28 +62,33 @@ function Navbar() {
           <Link to='/'>Home</Link>
         </li>
         <li>
-          {uid ? (
-            <Link to='/' onClick={handleClick}>
-              SignOut
-            </Link>
-          ) : (
-            <Link to='/signin'>SignIn</Link>
-          )}
-        </li>
-        <li>
           <Link to='/cart'>
             <BsBagCheck className='navicon' />
-            {totalItems ? <span className='cartlength'>{totalItems}</span> : ''}
+            {cartItems.length ? (
+              <span className='cartlength'>{cartItems.length}</span>
+            ) : null}
+          </Link>
+        </li>
+        <li>
+          <Link to='/wishlist'>
+            <BsHeartFill className='navicon' />
+            {wishlist.length ? (
+              <span className='cartlength'>{wishlist.length}</span>
+            ) : null}
           </Link>
         </li>
         {uid ? (
           <li className='username'>
-            <FaUserCircle className='user' />
+            <FaUserCircle onClick={handleUser} className='user' />
           </li>
-        ) : null}
+        ) : (
+          <li>
+            <Link to='/signin'>SignIn</Link>
+          </li>
+        )}
       </ul>
     </nav>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;
