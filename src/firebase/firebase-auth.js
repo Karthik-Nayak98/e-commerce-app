@@ -6,8 +6,8 @@ import {
 import { auth } from './firebase.utils';
 
 export const createUser = (name, email, password) => {
-  return createUserWithEmailAndPassword(auth, email, password)
-}
+  return createUserWithEmailAndPassword(auth, email, password);
+};
 
 export const signInWithEmail = (email, password) => {
   return signInWithEmailAndPassword(auth, email, password);

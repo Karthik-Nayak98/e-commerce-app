@@ -1,6 +1,6 @@
 import { initializeApp } from '@firebase/app';
 import { getAuth } from '@firebase/auth';
-import { getFirestore } from '@firebase/firestore';
+import { initializeFirestore } from '@firebase/firestore';
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -14,7 +14,12 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
+// Polling parameter is added to wait until the firebase responds.
+// By default its 10 sec.
+const db = initializeFirestore(app, {
+  experimentalForceLongPolling: true,
+  useFetchStreams: false,
+});
 const auth = getAuth(app);
-const db = getFirestore(app);
 
 export { auth, db };
