@@ -1,5 +1,5 @@
 import React from 'react';
-import Container from '../../components/container/container.component';
+import { Container } from '../../components';
 import './homepage.styles.css';
 
 function Homepage() {

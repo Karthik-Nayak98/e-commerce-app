@@ -1,71 +1,72 @@
-import React, { useState } from 'react'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import React, { useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
-import Header from '../../components/header/header.component'
-import Button from '../../components/button/button.component'
-import InputContainer from '../../components/input-container/input-container'
-import FormInput from '../../components/form-input/form-input.component'
-import FormLabel from '../../components/form-label/form-label.component'
-import Spinner from '../../components/spinners/spinner'
+import {
+  Button,
+  FormInput,
+  FormLabel,
+  Header,
+  InputContainer,
+  Spinner,
+} from '../../components';
 
-import { signInWithEmail } from '../../firebase/firebase-auth'
+import { signInWithEmail } from '../../firebase/firebase-auth';
 
-import './signin.styles.css'
+import './signin.styles.css';
 
 const initialState = {
   email: '',
   password: '',
-}
+};
 
 const SignIn = () => {
-  const [isLoading, setIsLoading] = useState(false)
-  const [form, setForm] = useState(initialState)
-  const [error, setError] = useState('')
+  const [isLoading, setIsLoading] = useState(false);
+  const [form, setForm] = useState(initialState);
+  const [error, setError] = useState('');
 
-  const navigate = useNavigate()
-  const { state } = useLocation()
-  const path = state ? state.path : null
+  const navigate = useNavigate();
+  const { state } = useLocation();
+  const path = state ? state.path : null;
 
   function handleChange(event) {
-    const key = event.target.name
-    const inputValue = event.target.value
+    const key = event.target.name;
+    const inputValue = event.target.value;
 
-    setForm({ ...form, [key]: inputValue })
-    setError('')
+    setForm({ ...form, [key]: inputValue });
+    setError('');
   }
 
   const handleSubmitGuest = async (event) => {
-    event.preventDefault()
-    setIsLoading(true)
-    const email = 'guest@gmail.com'
-    const password = 'guest@123'
-
+    event.preventDefault();
+    setIsLoading(true);
+    const email = 'guest@gmail.com';
+    const password = 'guest@123';
     try {
-      await signInWithEmail(email, password)
-      setIsLoading(false)
-      navigate(path || '/')
+      await signInWithEmail(email, password);
+      setIsLoading(false);
+      navigate(path || '/');
     } catch (err) {
       if (err.code === 'auth/wrong-password')
-        setError('Please enter the correct password.')
-      else if (err.code === 'auth/user-not-found') setError('User is not found.')
-      setIsLoading(false)
+        setError('Please enter the correct password.');
+      else if (err.code === 'auth/user-not-found') setError('User is not found.');
+      setIsLoading(false);
     }
-  }
+  };
 
   const handleSubmit = async (event) => {
-    event.preventDefault()
-    setIsLoading(true)
+    event.preventDefault();
+    setIsLoading(true);
     try {
-      await signInWithEmail(form.email, form.password)
-      setIsLoading(false)
-      navigate(path || '/')
+      await signInWithEmail(form.email, form.password);
+      setIsLoading(false);
+      navigate(path || '/');
     } catch (err) {
       if (err.code === 'auth/wrong-password')
-        setError('Please enter the correct password.')
-      else if (err.code === 'auth/user-not-found') setError('User is not found.')
-      setIsLoading(false)
+        setError('Please enter the correct password.');
+      else if (err.code === 'auth/user-not-found') setError('User is not found.');
+      setIsLoading(false);
     }
-  }
+  };
 
   return (
     <div className='form__container'>
@@ -116,7 +117,7 @@ const SignIn = () => {
         </div>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default SignIn
+export default SignIn;

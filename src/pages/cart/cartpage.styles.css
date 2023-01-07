@@ -14,13 +14,12 @@
   flex-direction: column;
   justify-content: flex-start;
   flex-wrap: wrap;
-  width: 80vw;
+  width: 85vw;
   max-width: 600px;
-  padding: 0.5rem 0.8rem;
   margin: 10px auto;
   background-color: rgb(250, 250, 250);
   border-radius: 10px;
-  box-shadow: 0px 2px 1px 2px rgb(236, 236, 236);
+  box-shadow: 0 2px 1px 2px rgb(236, 236, 236);
 }
 
 .cart-product__count {
@@ -38,13 +37,14 @@
   position: relative;
   max-width: 100%;
   border-bottom: 1px solid rgb(146, 146, 146);
+  padding: 4px;
 }
 
 .cart-product-image {
-  width: 130px;
-  height: 130px;
+  width: 150px;
+  height: 150px;
   object-fit: cover;
-  padding: 0.7rem;
+  /* padding: 0.7rem; */
 }
 .cart-product-image img {
   width: 90%;

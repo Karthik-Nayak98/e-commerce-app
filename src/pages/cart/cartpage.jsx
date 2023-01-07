@@ -1,59 +1,40 @@
 import React from 'react';
-import Header from '../../components/header/header.component';
-import Button from '../../components/button/button.component';
-import EmptyCart from '../../components/empty-cart/empty-cart';
 
 import { MdDeleteForever } from 'react-icons/md';
+import { Button, Checkout, EmptyCart, Header } from '../../components';
 
-import './cartpage.styles.css';
-import Checkout from '../../components/checkout/checkout';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  decrementTotalPrice,
-  incrementItemCount,
-  decrementItemCount,
-  removeItem,
-  incrementTotalPrice,
-  decrementItem,
-  incrementItem,
-} from '../../redux/slice/cartSlice';
-import { toast, ToastContainer } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import useToast from '../../hooks/useToast';
+import {
+  decrementItem,
+  decrementItemCount,
+  decrementTotalPrice,
+  incrementItem,
+  incrementItemCount,
+  incrementTotalPrice,
+  removeItem,
+} from '../../redux/slice/cartSlice';
+import './cartpage.styles.css';
 
 export default function Cart() {
   const dispatch = useDispatch();
-  const { cartItems, totalItems, totalPrice } = useSelector(
-    (state) => state.cart
-  );
+  const { cartItems, totalItems, totalPrice } = useSelector((state) => state.cart);
+  const { successToast, errorToast } = useToast();
 
   function incrementCartProduct(event, product) {
     dispatch(incrementItemCount(1));
     dispatch(incrementItem(product));
     dispatch(incrementTotalPrice(product.price));
-    toast.success('Item added to cart', {
-      position: 'top-right',
-      autoClose: 1500,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
+    successToast('Item added to cart');
   }
 
   function decrementCartProduct(event, product) {
     dispatch(decrementItemCount(1));
     dispatch(decrementItem(product));
     dispatch(decrementTotalPrice(product.price));
-    toast.error('Item removed from cart', {
-      position: 'top-right',
-      autoClose: 1500,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
+    errorToast('Item removed from cart');
   }
 
   function removeCartItem(event, product) {
@@ -61,19 +42,11 @@ export default function Cart() {
     dispatch(decrementItemCount(cartItems[index].quantity));
     dispatch(decrementTotalPrice(cartItems[index].totalPrice));
     dispatch(removeItem(product));
-    toast.error('Item removed from cart', {
-      position: 'top-right',
-      autoClose: 1500,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
+    errorToast('Item deleted from cart');
   }
 
   return totalItems ? (
-    <div>
+    <>
       <Header header='CartItems' />
       <ToastContainer />
       <div className='cart__container'>
@@ -104,9 +77,7 @@ export default function Cart() {
                     title='+'></Button>
                 </div>
                 <div className='cart-product__price'>
-                  <div className='product-price'>
-                    ${item.totalPrice.toFixed(2)}
-                  </div>
+                  <div className='product-price'>₹{item.totalPrice.toFixed(2)}</div>
                   <Button
                     data-key={`${index}`}
                     onClick={(event) => removeCartItem(event, item)}
@@ -125,8 +96,11 @@ export default function Cart() {
         </div>
         <Checkout totalPrice={totalPrice} />
       </div>
-    </div>
+    </>
   ) : (
-    <EmptyCart />
+    <EmptyCart
+      heading='Your cart is empty!!'
+      message='Looks like you have not added anything to your cart yet.'
+    />
   );
 }
