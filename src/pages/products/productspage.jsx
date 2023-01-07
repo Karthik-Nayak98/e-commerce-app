@@ -1,78 +1,65 @@
-import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { BsCart4 } from 'react-icons/bs';
-
-import useProducts from '../../hooks/useProducts';
-
-import Header from '../../components/header/header.component';
-import Button from '../../components/button/button.component';
-
-import './products.styles.css';
-import Spinner from '../../components/spinners/spinner.jsx';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { BsHeart } from 'react-icons/bs';
+import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import { Header, Product, Spinner } from '../../components';
+import useToast from '../../hooks/useToast';
 import {
+  addItem,
+  addToWishlist,
   incrementItemCount,
   incrementTotalPrice,
-  addItem,
-} from '../../redux/slice/cartSlice.js';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+} from '../../redux/slice/cartSlice';
 
-import { useDispatch } from 'react-redux';
+import 'react-toastify/dist/ReactToastify.css';
+import './products.styles.css';
 
 function Products() {
-  const params = useLocation();
-  const route = params.pathname.split('/')[1];
-  const [productList, isLoading] = useProducts(route);
+  const { categoryId } = useParams();
+  const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const { successToast } = useToast();
   const dispatch = useDispatch();
 
-  function handleClick(event, product) {
+  useEffect(() => {
+    setIsLoading(true);
+    axios
+      .get(`/api/category/${categoryId}`)
+      .then((res) => setProducts(res.data.products))
+      .catch((err) => console.log(err));
+    setIsLoading(false);
+  }, []);
+
+  function handleWishlist(product) {
+    dispatch(addToWishlist(product));
+    successToast('Item added to wishlist');
+  }
+
+  function handleCart(product) {
     dispatch(addItem(product));
     dispatch(incrementItemCount(1));
     dispatch(incrementTotalPrice(product.price));
-    toast.success('Item added to cart', {
-      position: 'top-right',
-      autoClose: 1500,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
+    successToast('Item added to cart');
   }
 
   return isLoading ? (
     <Spinner />
   ) : (
     <div>
-      <Header header={`${route.toUpperCase()} CATEGORY`} />
+      <Header header={`${categoryId.toUpperCase()} CATEGORY`} />
       <ToastContainer />
       <div className='product-container'>
-        {productList.map((item) => (
-          <div key={item.id} className='products'>
-            <div className='product'>
-              <Link to={`/${route}/${item.id}`}>
-                <figure className='product-image'>
-                  <img src={item.image} alt={item.title} />
-                </figure>
-              </Link>
-              <div className='description'>
-                <div className='title' title={item.title}>
-                  {item.title}
-                </div>
-                <div className='price'>
-                  <span className='rupee'>$</span>
-                  {item.price}
-                </div>
-              </div>
-            </div>
-            <Button
-              data-id={`${item.id}`}
-              classname='btn-cart'
-              title='Add to Cart'
-              onClick={(event) => handleClick(event, item)}>
-              <BsCart4 pointerEvents='none' className='cart-icon' />
-            </Button>
-          </div>
+        {products?.map((item) => (
+          <Product
+            key={item.id}
+            item={item}
+            icon={<BsHeart />}
+            color='#720eb4'
+            handleCart={handleCart}
+            handleWishlist={handleWishlist}
+          />
         ))}
       </div>
     </div>

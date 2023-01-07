@@ -1,43 +1,43 @@
-import React from 'react'
-import { useParams } from 'react-router-dom'
-import { BsCart4, BsStarFill } from 'react-icons/bs'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { BsCart4, BsStarFill } from 'react-icons/bs';
+import { useParams } from 'react-router-dom';
 
-import { ALL_PRODUCTS } from '../../constants/apiurl'
-import useProducts from '../../hooks/useProducts'
+import { Button, Header, Spinner } from '../../components';
 
-import Header from '../../components/header/header.component'
-import Button from '../../components/button/button.component'
-
-import './description.styles.css'
-import Spinner from '../../components/spinners/spinner'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {
   addItem,
   incrementItemCount,
   incrementTotalPrice,
-} from '../../redux/slice/cartSlice'
-import { toast, ToastContainer } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
+} from '../../redux/slice/cartSlice';
+import './description.styles.css';
 
-import { useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux';
+import useToast from '../../hooks/useToast';
 
 function Description() {
-  const { id } = useParams()
-  const [product, isLoading] = useProducts(`${ALL_PRODUCTS}/${id}`)
-  const dispatch = useDispatch()
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const [product, setProduct] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+  const { successToast } = useToast();
 
-  function handleClick(event) {
-    dispatch(addItem(product))
-    dispatch(incrementItemCount(1))
-    dispatch(incrementTotalPrice(product.price))
-    toast.success('Item added to cart', {
-      position: 'top-right',
-      autoClose: 1500,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    })
+  useEffect(() => {
+    setIsLoading(true);
+    axios
+      .get(`/api/products/${id}`)
+      .then((res) => setProduct(res.data.product))
+      .catch((err) => console.log(err));
+    setIsLoading(false);
+  }, []);
+
+  function handleClick() {
+    dispatch(addItem(product));
+    dispatch(incrementItemCount(1));
+    dispatch(incrementTotalPrice(product.price));
+    successToast('Item added to cart');
   }
 
   return isLoading ? (
@@ -56,7 +56,7 @@ function Description() {
             <span className='product-description__rating'>
               <BsStarFill className='product-description__rating--icon' />
               <p className='product-description__rating--rate'>
-                {product.rating.rate}/5.0
+                {product.rating}/5.0
               </p>
             </span>
             <span className='product-description__price'>${product.price}</span>
@@ -73,7 +73,7 @@ function Description() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Description
+export default Description;
