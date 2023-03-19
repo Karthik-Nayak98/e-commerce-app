@@ -60,7 +60,7 @@ function Description() {
                 {product.rating}/5.0
               </p>
             </span>
-            <span className='product-description__price'>${product.price}</span>
+            <span className='product-description__price'>₹{product.price}</span>
           </div>
           <p className='product-description__text'>{product.description}</p>
 
